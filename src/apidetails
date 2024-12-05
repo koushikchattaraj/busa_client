@@ -1,0 +1,2 @@
+GET All the players - http://44.204.80.45/api/players
+create player -  POST - http://44.204.80.45/api/players
