@@ -18,3 +18,7 @@ export const createPlayer = (userData) => {
 export const getAllPlayers = () => {
   return apiClient.get("/api/players");
 };
+
+export const getPlayerById = (id) => {
+  return apiClient.get(`/api/players/${id}`);
+};

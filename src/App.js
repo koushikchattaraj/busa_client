@@ -5,6 +5,7 @@ import Players from "./component/Players/Players";
 import Home from "./component/Home/Home";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./component/Login/Login";
+import { PlayerDetails } from "./component/PlayerDetails/PlayerDetails";
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
             <Route
               path="/players"
               element={<ProtectedRoute element={<Players />} />}
+            />
+            <Route
+              path="/players_details/:id"
+              element={<ProtectedRoute element={<PlayerDetails />} />}
             />
           </Routes>
         </div>
