@@ -21,14 +21,18 @@ export const PlayerDetails = () => {
         setPlayerDetails(res.data);
         setApiStatus("success");
         setIsLoading(false);
-      }, 3000);
+      }, 1000);
     } catch (error) {
       setTimeout(() => {
         setApiStatus("error");
         setIsLoading(false);
-      }, 3000);
+      }, 1000);
     }
   }, []);
+
+  useEffect(() => {
+    console.log(playerDetails);
+  }, [playerDetails]);
 
   useEffect(() => {
     if (idFromParams) {

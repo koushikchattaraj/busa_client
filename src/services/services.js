@@ -22,3 +22,12 @@ export const getAllPlayers = () => {
 export const getPlayerById = (id) => {
   return apiClient.get(`/api/players/${id}`);
 };
+
+export const rozarpay = () => {
+  const data = {
+    amount: 31100,
+    currency: "INR",
+    receipt: "order_rcptid_11",
+  };
+  return apiClient.post("/create-order", data);
+};

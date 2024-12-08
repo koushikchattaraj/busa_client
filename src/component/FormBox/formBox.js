@@ -25,6 +25,12 @@ const FormBox = () => {
     photo: null,
   });
 
+  // const isFormIncomplete = () => {
+  //   return Object.values(formData).some((value) => {
+  //     return value === "" || value === null;
+  //   });
+  // };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -292,8 +298,12 @@ const FormBox = () => {
         </div>
 
         <button type="submit" className="submit-button">
-          Submit
+          submit
         </button>
+        {/* <PaymentButton
+          handleCreate={handleSubmit}
+          isDisable={isFormIncomplete}
+        /> */}
       </form>
     </div>
   );

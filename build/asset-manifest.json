@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.14d5d19a.css",
-    "main.js": "/static/js/main.95176634.js",
-    "static/js/453.3f00ca37.chunk.js": "/static/js/453.3f00ca37.chunk.js",
-    "static/media/koushik.jpeg": "/static/media/koushik.a80f7eaa6987b787f84b.jpeg",
-    "index.html": "/index.html",
-    "main.14d5d19a.css.map": "/static/css/main.14d5d19a.css.map",
-    "main.95176634.js.map": "/static/js/main.95176634.js.map",
-    "453.3f00ca37.chunk.js.map": "/static/js/453.3f00ca37.chunk.js.map"
+    "main.css": "/koushikchattaraj/busa_client/static/css/main.7cf8bfdf.css",
+    "main.js": "/koushikchattaraj/busa_client/static/js/main.a7660135.js",
+    "static/js/453.3f00ca37.chunk.js": "/koushikchattaraj/busa_client/static/js/453.3f00ca37.chunk.js",
+    "static/media/koushik.jpeg": "/koushikchattaraj/busa_client/static/media/koushik.a80f7eaa6987b787f84b.jpeg",
+    "index.html": "/koushikchattaraj/busa_client/index.html",
+    "main.7cf8bfdf.css.map": "/koushikchattaraj/busa_client/static/css/main.7cf8bfdf.css.map",
+    "main.a7660135.js.map": "/koushikchattaraj/busa_client/static/js/main.a7660135.js.map",
+    "453.3f00ca37.chunk.js.map": "/koushikchattaraj/busa_client/static/js/453.3f00ca37.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.14d5d19a.css",
-    "static/js/main.95176634.js"
+    "static/css/main.7cf8bfdf.css",
+    "static/js/main.a7660135.js"
   ]
 }
