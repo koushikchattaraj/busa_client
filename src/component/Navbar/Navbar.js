@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 import isAuthenticated from "../../auth";
 import { useNavigate } from "react-router-dom";
+import busalogo from "../../assets/images/busalogo.png";
 
 const MyNavbar = () => {
   const navigate = useNavigate();
@@ -26,9 +27,20 @@ const MyNavbar = () => {
   const [playerId, setPlayerId] = useState("");
 
   return (
-    <Navbar expand="lg" bg="dark" variant="dark">
+    <Navbar expand="lg" bg="light" variant="light">
       <Container>
-        <Navbar.Brand href="/">MyWebsite</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img
+            src={busalogo}
+            alt="Profile Preview"
+            style={{
+              width: "75px",
+              height: "75px",
+              objectFit: "cover",
+              borderRadius: "50%",
+            }}
+          />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">
           <Nav className="ms-auto">
