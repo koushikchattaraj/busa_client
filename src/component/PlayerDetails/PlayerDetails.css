@@ -3,8 +3,18 @@
     height: 100vh;
     overflow: hidden;
     background: radial-gradient(circle, #2b1055, #090a1d);
-    /* background-image:url("https://1.bp.blogspot.com/-Fo3iRt97ZXY/XvSG4EMwi0I/AAAAAAAAVEo/mrApRTcVVRk1m-fX9K-ffNwRUXlHUocdwCLcBGAsYHQ/s1600/h.jpg"); */
     font-family: "Times New Roman";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .PlayerDetailsBody {
+      height: 87vh;
+  }
 }
 
 .playerNumberBox{

@@ -1,79 +1,58 @@
 import React from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
-import isAuthenticated from "../../auth";
+import lalmati from "../../assets/images/lalmati.png";
 
-const Home = () => {
-  const isAuthenticatedUser = isAuthenticated();
-  const [playerId, setPlayerId] = React.useState("");
+const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
   const navigate = useNavigate();
+
   return (
     <div>
+      <div>
+        <div class="starsec"></div>
+        <div class="starthird"></div>
+        <div class="starfourth"></div>
+        <div class="starfifth"></div>
+      </div>
+
       <div className="PlayerDetailsBody">
-        <div className="loginBox">
-          {!isAuthenticatedUser && (
-            <button
-              class="button-90"
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              Login
-            </button>
-          )}
-          {isAuthenticatedUser && (
-            <div className="userButtonBox">
+        <div className="text-center">
+          <img
+            src={lalmati}
+            alt="Profile Preview"
+            style={{
+              width: "300px",
+              height: "300px",
+              objectFit: "cover",
+              borderRadius: "50%",
+            }}
+          />
+        </div>
+        <h1 className="text-center color-white">
+          Welcome to Lalmati Cricket Leauge
+        </h1>
+        {!isPlayerRegistrationFeatureEnabled && (
+          <h3 className="text-center color-white">
+            Player Registration will start on 10th Janury 2025
+          </h3>
+        )}
+        {isPlayerRegistrationFeatureEnabled && (
+          <>
+            <div className="buttonbox">
               <button
-                class="button-90"
+                class="button-85"
                 onClick={() => {
-                  navigate("/players");
+                  navigate("/player_registration");
                 }}
               >
-                Players
-              </button>
-              <div className="form-group" style={{ margin: 0 }}>
-                <input
-                  placeholder="Player Id"
-                  name="playerId"
-                  value={playerId}
-                  onChange={(e) => setPlayerId(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault(); // Only prevent default behavior for "Enter"
-                      navigate(`/players_details/${playerId}`);
-                    }
-                  }}
-                  required
-                />
-              </div>
-              <button
-                class="button-90"
-                onClick={() => {
-                  navigate(`/players_details/${playerId}`);
-                }}
-                disabled={!playerId}
-              >
-                Search Players Details
+                Player Registration
               </button>
             </div>
-          )}
-        </div>
-        <div>
-          <div class="starsec"></div>
-          <div class="starthird"></div>
-          <div class="starfourth"></div>
-          <div class="starfifth"></div>
-        </div>
-        <div className="buttonbox">
-          <button
-            class="button-85"
-            onClick={() => {
-              navigate("/player_registration");
-            }}
-          >
-            Player Registration
-          </button>
-        </div>
+            <h3 className="text-center color-white mt-2">
+              Registration window will close by 15th Janury 2025
+            </h3>
+          </>
+        )}
       </div>
     </div>
   );

@@ -6,16 +6,44 @@ import Home from "./component/Home/Home";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./component/Login/Login";
 import { PlayerDetails } from "./component/PlayerDetails/PlayerDetails";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "./component/Navbar/Navbar";
+import { useIsFeatureEnabled } from "./util/util";
+import { Teams } from "./component/Teams/Teams";
+import { About } from "./component/About/About";
+import { Contact } from "./component/Contact/Contact";
 
 function App() {
+  const isPlayerRegistrationFeatureEnabled = useIsFeatureEnabled(
+    "PLAYER_REGISTRATION"
+  );
   return (
     <div className="App">
       <Router>
         <div>
+          <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  isPlayerRegistrationFeatureEnabled={
+                    isPlayerRegistrationFeatureEnabled
+                  }
+                />
+              }
+            />
             <Route path="/login" element={<Login />} />
-            <Route path="/player_registration" element={<FormBox />} />
+            <Route
+              path="/player_registration"
+              element={
+                <FormBox
+                  isPlayerRegistrationFeatureEnabled={
+                    isPlayerRegistrationFeatureEnabled
+                  }
+                />
+              }
+            />
             <Route
               path="/players"
               element={<ProtectedRoute element={<Players />} />}
@@ -24,6 +52,9 @@ function App() {
               path="/players_details/:id"
               element={<ProtectedRoute element={<PlayerDetails />} />}
             />
+            <Route path="/teams" element={<Teams />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
       </Router>
