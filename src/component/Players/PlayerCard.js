@@ -10,7 +10,7 @@ const PlayerCard = ({ player }) => {
       <div class="card-content">
         <div class="avatar-wrapper">
           <div class="avatar">
-            <img src={koushikImg} alt="..." style={{ height: "100%" }} />
+            <img src={player?.photo} alt="..." style={{ height: "100%" }} />
           </div>
         </div>
 

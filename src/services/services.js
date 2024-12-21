@@ -12,7 +12,23 @@ const apiClient = axios.create({
 export default apiClient;
 
 export const createPlayer = (userData) => {
-  return apiClient.post("/api/players", userData);
+  const formData = new FormData();
+  for (const key in userData) {
+    if (userData[key]) {
+      if (key === "photo" || key === "uploadPaymentProof") {
+        formData.append(key, userData[key]);
+      } else {
+        formData.append(key, userData[key]);
+      }
+    }
+  }
+
+  // Set headers for file upload
+  return apiClient.post("/api/players", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 
 export const getAllPlayers = () => {
