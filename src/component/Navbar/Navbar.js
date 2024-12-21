@@ -34,8 +34,7 @@ const MyNavbar = () => {
             src={busalogo}
             alt="Profile Preview"
             style={{
-              width: "75px",
-              height: "75px",
+              width: "50px",
               objectFit: "cover",
               borderRadius: "50%",
             }}
