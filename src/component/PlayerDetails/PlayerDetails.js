@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./PlayerDetails.css";
 import koushikImg from "../../assets/images/koushik.jpeg";
-import { Loader } from "../Loader/Loader";
+import Loader from "../Loader/Loader";
 import { getPlayerById } from "../../services/services";
 import { useParams } from "react-router-dom";
 

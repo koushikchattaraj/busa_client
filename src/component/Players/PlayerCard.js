@@ -1,5 +1,4 @@
 import React from "react";
-import koushikImg from "../../assets/images/koushik.jpeg";
 
 const PlayerCard = ({ player }) => {
   return (
