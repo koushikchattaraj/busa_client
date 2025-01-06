@@ -91,7 +91,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
   };
 
   const handleCreate = useCallback(async () => {
-    setIsLoading();
+    setIsLoading(true);
     try {
       await createPlayer(formData);
       alert("Player registration successful!");
