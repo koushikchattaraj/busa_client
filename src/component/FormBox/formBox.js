@@ -6,10 +6,12 @@ import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import lalmati from "../../assets/images/lalmati.png";
 import TandCModal from "../TandCModal/TandCModal";
 import Loader from "../Loader/Loader";
+import PaymentProcessModal from "../PaymentProcessModal/PaymentProcessModal";
 
 const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
   const [showModal, setShowModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [showPaymentProcessModal, setShowPaymentProcessModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({
     // playerName: "Koushik Chattaraj",
     // playerNickName: "1234567890",
@@ -139,7 +141,14 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
         <>
           <TandCModal
             show={showModal}
-            handleClose={() => setShowModal(false)}
+            handleClose={() => {
+              setShowModal(false);
+              setShowPaymentProcessModal(true);
+            }}
+          />
+          <PaymentProcessModal
+            show={showPaymentProcessModal}
+            handleClose={() => setShowPaymentProcessModal(false)}
           />
           {isLoading && <Loader />}
           {!isLoading && (
@@ -179,7 +188,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                 {/* Personal Details Section */}
                 <h3>Personal Details</h3>
                 <Row className="mb-3">
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="playerName">
                       <Form.Control
                         type="text"
@@ -191,7 +200,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                       />
                     </Form.Group>
                   </Col>
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="playerNickName">
                       <Form.Control
                         type="text"
@@ -203,12 +212,13 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     </Form.Group>
                   </Col>
                 </Row>
+
                 <Row className="mb-3">
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="height">
                       <Form.Control
                         type="text"
-                        placeholder="Height (cm)"
+                        placeholder="Height (ft)"
                         name="height"
                         value={formData.height}
                         onChange={handleChange}
@@ -216,7 +226,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                       />
                     </Form.Group>
                   </Col>
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="weight">
                       <Form.Control
                         type="text"
@@ -229,8 +239,9 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     </Form.Group>
                   </Col>
                 </Row>
+
                 <Row className="mb-3">
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="dob">
                       <Form.Label>Date of Birth</Form.Label>
                       <Form.Control
@@ -242,7 +253,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                       />
                     </Form.Group>
                   </Col>
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="photo">
                       <Form.Label>Profile Photo</Form.Label>
                       <Form.Control
@@ -254,10 +265,11 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     </Form.Group>
                   </Col>
                 </Row>
+
                 {/* Contact Details Section */}
                 <h3>Contact Details</h3>
                 <Row className="mb-3">
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="mobile">
                       <Form.Control
                         type="tel"
@@ -269,7 +281,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                       />
                     </Form.Group>
                   </Col>
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="aadharId">
                       <Form.Control
                         type="text"
@@ -282,6 +294,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     </Form.Group>
                   </Col>
                 </Row>
+
                 <Form.Group controlId="address" className="mb-3">
                   <Form.Label>Address</Form.Label>
                   <Form.Control
@@ -294,8 +307,9 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     required
                   />
                 </Form.Group>
+
                 <Row className="mb-3">
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="district">
                       <Form.Control
                         type="text"
@@ -307,7 +321,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                       />
                     </Form.Group>
                   </Col>
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="pinCode">
                       <Form.Control
                         type="number"
@@ -320,10 +334,11 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     </Form.Group>
                   </Col>
                 </Row>
+
                 {/* About Your Game Section */}
                 <h3>About Player</h3>
                 <Row className="mb-3">
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="playerType">
                       <Form.Control
                         as="select"
@@ -339,7 +354,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                       </Form.Control>
                     </Form.Group>
                   </Col>
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="bowlingPace">
                       <Form.Control
                         as="select"
@@ -356,8 +371,9 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     </Form.Group>
                   </Col>
                 </Row>
+
                 <Row className="mb-3">
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="battingArm">
                       <Form.Control
                         as="select"
@@ -372,7 +388,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                       </Form.Control>
                     </Form.Group>
                   </Col>
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="bowlingArm">
                       <Form.Control
                         as="select"
@@ -388,8 +404,9 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     </Form.Group>
                   </Col>
                 </Row>
+
                 <Row className="mb-3">
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="preferredJerseyNumber">
                       <Form.Control
                         type="number"
@@ -400,7 +417,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                       />
                     </Form.Group>
                   </Col>
-                  <Col md={6}>
+                  <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="preferredJerseyName">
                       <Form.Control
                         type="text"
@@ -412,8 +429,9 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     </Form.Group>
                   </Col>
                 </Row>
+
                 <Row className="mb-3">
-                  <Col md={12}>
+                  <Col md={12} xs={12}>
                     <Form.Group controlId="uploadPaymentProof">
                       <Form.Label>Upload Payment Proof</Form.Label>
                       <Form.Control
@@ -425,6 +443,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     </Form.Group>
                   </Col>
                 </Row>
+
                 <Button type="submit" className="submit-button">
                   Submit
                 </Button>

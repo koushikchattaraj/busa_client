@@ -14,6 +14,9 @@ import busalogo from "../../assets/images/busalogo.png";
 const MyNavbar = () => {
   const navigate = useNavigate();
 
+  // State to control Navbar collapse
+  const [expanded, setExpanded] = useState(false);
+
   // Logout function
   const logout = () => {
     localStorage.removeItem("authToken");
@@ -26,55 +29,93 @@ const MyNavbar = () => {
   // State for playerId input
   const [playerId, setPlayerId] = useState("");
 
+  const handleNavigate = (path) => {
+    navigate(path);
+    setExpanded(false); // Close the navbar after navigation
+  };
+
   return (
-    <Navbar expand="lg" bg="light" variant="light">
+    <Navbar
+      expand="lg"
+      bg="light"
+      variant="light"
+      className="shadow-sm"
+      expanded={expanded}
+    >
       <Container>
-        <Navbar.Brand href="/">
+        {/* Brand Logo and Name */}
+        <Navbar.Brand
+          onClick={() => handleNavigate("/")}
+          className="d-flex align-items-center gap-2"
+          style={{ cursor: "pointer" }}
+        >
           <img
             src={busalogo}
-            alt="Profile Preview"
+            alt="BUSA Logo"
+            className="img-fluid"
             style={{
               width: "50px",
               objectFit: "cover",
               borderRadius: "50%",
             }}
           />
+          <span className="fw-bold text-truncate" style={{ fontSize: "12px" }}>
+            Bankura United Sports Association
+          </span>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbar-nav" />
-        <Navbar.Collapse id="navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="/Teams">Teams</Nav.Link>
-            <Nav.Link href="/about">About</Nav.Link>
-            <Nav.Link href="/contact">Contact</Nav.Link>
+
+        {/* Responsive Navbar Toggle */}
+        <Navbar.Toggle
+          aria-controls="navbar-nav"
+          onClick={() => setExpanded(!expanded)}
+        />
+
+        {/* Navbar Collapse */}
+        <Navbar.Collapse id="navbar-nav" className="justify-content-end">
+          <Nav className="ms-auto align-items-center gap-3">
+            <Nav.Link onClick={() => handleNavigate("/teams")}>Teams</Nav.Link>
+            <Nav.Link onClick={() => handleNavigate("/about")}>About</Nav.Link>
+            <Nav.Link onClick={() => handleNavigate("/contact")}>
+              Contact
+            </Nav.Link>
             {isAuthenticatedUser ? (
               <>
                 <Nav.Link onClick={logout}>Logout</Nav.Link>
-                <Nav.Link href="/players">Players</Nav.Link>
+                <Nav.Link onClick={() => handleNavigate("/players")}>
+                  Players
+                </Nav.Link>
               </>
             ) : (
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link onClick={() => handleNavigate("/login")}>
+                Login
+              </Nav.Link>
             )}
           </Nav>
+
+          {/* Search Form (Shown for Authenticated Users) */}
           {isAuthenticatedUser && (
-            <Form className="d-flex">
+            <Form className="d-flex ms-3">
               <FormControl
                 type="search"
-                className="me-2"
-                aria-label="Search"
                 placeholder="Player ID"
-                name="playerId"
+                className="me-2"
+                aria-label="Search Player ID"
                 value={playerId}
                 onChange={(e) => setPlayerId(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     e.preventDefault();
                     navigate(`/players_details/${playerId}`);
+                    setExpanded(false); // Close navbar
                   }
                 }}
               />
               <Button
                 variant="outline-success"
-                onClick={() => navigate(`/players_details/${playerId}`)}
+                onClick={() => {
+                  navigate(`/players_details/${playerId}`);
+                  setExpanded(false); // Close navbar
+                }}
                 disabled={!playerId}
               >
                 Search

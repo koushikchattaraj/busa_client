@@ -29,11 +29,11 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
           />
         </div>
         <h1 className="text-center color-white">
-          Welcome to Lalmati Cricket Leauge
+          Welcome to Lalmatir Cricket Leauge
         </h1>
         {!isPlayerRegistrationFeatureEnabled && (
           <h3 className="text-center color-white">
-            Player Registration will start on 10th Janury 2025
+            Player Registration will start on 13th Janury 2025
           </h3>
         )}
         {isPlayerRegistrationFeatureEnabled && (
@@ -49,7 +49,7 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
               </button>
             </div>
             <h3 className="text-center color-white mt-2">
-              Registration window will close by 15th Janury 2025
+              Registration window will close by 18th Janury 2025
             </h3>
           </>
         )}
