@@ -65,7 +65,9 @@ const Players = () => {
       </div>
       <div className="player-grid">
         {filteredPlayers.map((player) => (
-          <PlayerCard key={player._id} player={player} />
+          <div className="d-flex flex-column">
+            <PlayerCard key={player._id} player={player} />
+          </div>
         ))}
       </div>
     </div>

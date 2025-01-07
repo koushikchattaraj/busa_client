@@ -410,7 +410,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     <Form.Group controlId="wicketKeeper">
                       <Form.Control
                         as="select"
-                        name="wicketkeeper"
+                        name="wicketKeeper"
                         value={formData.wicketKeeper}
                         onChange={handleChange}
                         required

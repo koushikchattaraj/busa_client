@@ -29,7 +29,7 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
           />
         </div>
         <h1 className="text-center color-white">
-          Welcome to Lalmatir Cricket Leauge
+          Welcome to Lal Matir Cricket Leauge
         </h1>
         {!isPlayerRegistrationFeatureEnabled && (
           <h3 className="text-center color-white">

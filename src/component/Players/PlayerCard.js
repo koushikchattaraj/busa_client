@@ -3,10 +3,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const PlayerCard = ({ player }) => {
   const playerData = player;
-  console.log(playerData);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
 
   return (
-    <div className="card mx-auto mt-4" style={{ maxWidth: "1400px" }}>
+    <div
+      className="card mx-auto mt-4"
+      style={{ maxWidth: "1400px", minWidth: "1400px" }}
+    >
       <div className="card-header text-center bg-primary text-white">
         <h1>{playerData.playerName}</h1>
         <p className="mb-0">{playerData.playerNickName}</p>
@@ -36,7 +46,7 @@ const PlayerCard = ({ player }) => {
           <div>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
-                <strong>DOB:</strong> {playerData.dob}
+                <strong>Date of Birth:</strong> {formatDate(playerData.dob)}
               </li>
               <li className="list-group-item">
                 <strong>Height:</strong> {playerData.height}
