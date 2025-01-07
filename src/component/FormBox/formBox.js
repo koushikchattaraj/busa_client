@@ -7,8 +7,10 @@ import lalmati from "../../assets/images/lalmati.png";
 import TandCModal from "../TandCModal/TandCModal";
 import Loader from "../Loader/Loader";
 import PaymentProcessModal from "../PaymentProcessModal/PaymentProcessModal";
+import { useNavigate } from "react-router-dom";
 
 const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(true);
   const [showPaymentProcessModal, setShowPaymentProcessModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +20,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
     // dob: "1998-10-28",
     // weight: "85",
     // height: "5'11",
-    // tShirtSize: "M",
+    // tShirtSize: "m",
     // mobile: "1234567890",
     // aadharId: "1234-5678-9012",
     // address: "123 Street",
@@ -96,7 +98,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
     setIsLoading(true);
     try {
       await createPlayer(formData);
-      alert("Player registration successful!");
+      alert("Thank you for the Registration! We will get back to you soon.");
       setFormData({
         playerName: "",
         playerNickName: "",
@@ -125,6 +127,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
       });
       setPhotoPreview(null);
       setIsLoading(false);
+      navigate("/");
     } catch (error) {
       setIsLoading(false);
       alert(
