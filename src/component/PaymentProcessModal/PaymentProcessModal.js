@@ -4,10 +4,10 @@ import phonepe from "../../assets/images/phonepe.png";
 import qrcode from "../../assets/images/qrcode.jpeg";
 
 const PaymentProcessModal = ({ show, handleClose }) => {
-  const phoneNumber = "+918250115917";
+  const phoneNumber = "+916294959483";
   const handleSendMoney = (upi) => {
     // Construct the UPI deep link
-    const phonpeUrl = `phonepe://pay?pa=koushik.chattaraj@ybl&pn=Koushik%20Chattaraj&am=300&cu=INR&tn=Payment`;
+    const phonpeUrl = `phonepe://pay?pa=6294959483@ybl&pn=Bankura%20United%20Sports%20Associationn&am=200&cu=INR&tn=Payment`;
     window.location.href = phonpeUrl;
   };
   return (
@@ -25,7 +25,7 @@ const PaymentProcessModal = ({ show, handleClose }) => {
         <div className="container">
           <div className="row text-center mb-3">
             <h4 className="col-12">
-             Registration fee Rs 200/- (Non Refundable) and save the screenshot
+              Registration fee Rs 200/- (Non Refundable) and save the screenshot
             </h4>
           </div>
 
@@ -74,7 +74,8 @@ const PaymentProcessModal = ({ show, handleClose }) => {
                   className="text-primary text-decoration-underline"
                 >
                   {phoneNumber}
-                </a>
+                </a>{" "}
+                (10:00 AM - 6:00 PM)
               </p>
             </div>
           </div>
