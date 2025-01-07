@@ -1,14 +1,14 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import phonepe from "../../assets/images/phonepe.png";
+import upi from "../../assets/images/upi.png";
 import qrcode from "../../assets/images/qrcode.jpeg";
 
 const PaymentProcessModal = ({ show, handleClose }) => {
   const phoneNumber = "+916294959483";
   const handleSendMoney = (upi) => {
     // Construct the UPI deep link
-    const phonpeUrl = `phonepe://pay?pa=6294959483@ybl&pn=Bankura%20United%20Sports%20Associationn&am=200&cu=INR&tn=Payment`;
-    window.location.href = phonpeUrl;
+    const phonepeUrl = `upi://pay?pa=6294959483@ybl&pn=Bankura%20United%20Sports%20Association&am=200&cu=INR&tn=Payment`;
+    window.location.href = phonepeUrl;
   };
   return (
     <Modal
@@ -37,7 +37,7 @@ const PaymentProcessModal = ({ show, handleClose }) => {
                 onClick={() => handleSendMoney("phonepe")}
               >
                 <img
-                  src={phonepe}
+                  src={upi}
                   alt="phonepe"
                   className="img-fluid"
                   style={{ maxWidth: "85px" }}
