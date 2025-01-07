@@ -25,7 +25,7 @@ const PaymentProcessModal = ({ show, handleClose }) => {
         <div className="container">
           <div className="row text-center mb-3">
             <h4 className="col-12">
-              You need to pay 300 rs as registration fee and save the screenshot
+             Registration fee Rs 200/- (Non Refundable) and save the screenshot
             </h4>
           </div>
 

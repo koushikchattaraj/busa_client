@@ -407,25 +407,39 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
 
                 <Row className="mb-3">
                   <Col md={6} xs={12} className="mb-3 mb-md-0">
-                    <Form.Group controlId="preferredJerseyNumber">
+                    <Form.Group controlId="wicketKeeper">
                       <Form.Control
-                        type="number"
-                        placeholder="Preferred Jersey Number"
-                        name="preferredJerseyNumber"
-                        value={formData.preferredJerseyNumber}
+                        as="select"
+                        name="wicketkeeper"
+                        value={formData.wicketKeeper}
                         onChange={handleChange}
-                      />
+                        required
+                      >
+                        <option value="">Wicket Keeper</option>
+                        <option value="yes">yes</option>
+                        <option value="no">No</option>
+                      </Form.Control>
                     </Form.Group>
                   </Col>
                   <Col md={6} xs={12} className="mb-3 mb-md-0">
-                    <Form.Group controlId="preferredJerseyName">
+                    <Form.Group controlId="jerseySize">
                       <Form.Control
-                        type="text"
-                        placeholder="Preferred Jersey Name"
-                        name="preferredJerseyName"
-                        value={formData.preferredJerseyName}
+                        as="select"
+                        name="jerseySize"
+                        value={formData.tShirtSize}
                         onChange={handleChange}
-                      />
+                        required
+                      >
+                        <option value="">Jearsey Size</option>
+                        <option value="s">S</option>
+                        <option value="m">M</option>
+                        <option value="l">L</option>
+                        <option value="xl">XL</option>
+                        <option value="xxl">XXL</option>
+                        <option value="3xl">3XL</option>
+                        <option value="4xl">4XL</option>
+                        <option value="5xl">5XL</option>
+                      </Form.Control>
                     </Form.Group>
                   </Col>
                 </Row>
