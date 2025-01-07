@@ -422,10 +422,10 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     </Form.Group>
                   </Col>
                   <Col md={6} xs={12} className="mb-3 mb-md-0">
-                    <Form.Group controlId="jerseySize">
+                    <Form.Group controlId="tShirtSize">
                       <Form.Control
                         as="select"
-                        name="jerseySize"
+                        name="tShirtSize"
                         value={formData.tShirtSize}
                         onChange={handleChange}
                         required
