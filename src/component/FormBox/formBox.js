@@ -9,9 +9,9 @@ import Loader from "../Loader/Loader";
 import PaymentProcessModal from "../PaymentProcessModal/PaymentProcessModal";
 
 const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
   const [showPaymentProcessModal, setShowPaymentProcessModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     // playerName: "Koushik Chattaraj",
     // playerNickName: "1234567890",

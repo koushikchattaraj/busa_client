@@ -1,7 +1,6 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import phonepe from "../../assets/images/phonepe.png";
-import gpay from "../../assets/images/gpay.png";
 import qrcode from "../../assets/images/qrcode.jpeg";
 
 const PaymentProcessModal = ({ show, handleClose }) => {
