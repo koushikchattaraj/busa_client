@@ -134,7 +134,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
         error?.response?.data?.message || "Player registration unsuccessful!"
       );
     }
-  }, [formData]);
+  }, [formData, navigate]);
 
   return (
     <>

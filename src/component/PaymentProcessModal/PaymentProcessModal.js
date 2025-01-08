@@ -5,9 +5,15 @@ import qrcode from "../../assets/images/qrcode.jpeg";
 
 const PaymentProcessModal = ({ show, handleClose }) => {
   const phoneNumber = "+916294959483";
+  const upiId = "Q923802744@ybl";
+  const name = "Bankura United Sports Association";
+  const amount = "200";
+  const currency = "INR";
+  const note = "Payment";
   const handleSendMoney = (upi) => {
-    // Construct the UPI deep link
-    const phonepeUrl = `upi://pay?pa=6294959483@ybl&pn=Bankura%20United%20Sports%20Association&am=200&cu=INR&tn=Payment`;
+    let phonepeUrl = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=${currency}&tn=${note}`;
+
+    // const phonepeUrl = `upi://pay?pa=Q923802744@ybl&pn=Bankura%20United%20Sports%20Association&am=200&cu=INR&tn=Payment`;
     window.location.href = phonepeUrl;
   };
   return (
