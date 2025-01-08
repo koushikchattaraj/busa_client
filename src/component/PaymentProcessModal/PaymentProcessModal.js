@@ -6,14 +6,12 @@ import qrcode from "../../assets/images/qrcode.jpeg";
 const PaymentProcessModal = ({ show, handleClose }) => {
   const phoneNumber = "+916294959483";
   const upiId = "Q923802744@ybl";
-  const name = "Bankura United Sports Association";
+  const name = "BankuraUnitedSportsAssociation";
   const amount = "200";
   const currency = "INR";
   const note = "Payment";
-  const handleSendMoney = (upi) => {
-    let phonepeUrl = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=${currency}&tn=${note}`;
-
-    // const phonepeUrl = `upi://pay?pa=Q923802744@ybl&pn=Bankura%20United%20Sports%20Association&am=200&cu=INR&tn=Payment`;
+  const handleSendMoney = () => {
+    let phonepeUrl = `phonepe://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=${currency}&tn=${note}`;
     window.location.href = phonepeUrl;
   };
   return (
@@ -35,7 +33,7 @@ const PaymentProcessModal = ({ show, handleClose }) => {
             </h4>
           </div>
 
-          <div className="row justify-content-center mb-3">
+          {/* <div className="row justify-content-center mb-3">
             <h5 className="col-12 text-center">Pay via:</h5>
             <div className="col-auto">
               <button
@@ -50,14 +48,14 @@ const PaymentProcessModal = ({ show, handleClose }) => {
                 />
               </button>
             </div>
-          </div>
+          </div> */}
 
-          <div className="row text-center mb-3">
+          {/* <div className="row text-center mb-3">
             <h5 className="col-12 text-decoration-underline">OR</h5>
-          </div>
+          </div> */}
 
           <div
-            className="row justify-content-center mb-3"
+            className="d-flex flex-column justify-content-center mb-3"
             style={{ alignItems: "center" }}
           >
             <h5 className="col-auto">Scan the QR Code:</h5>
@@ -66,7 +64,7 @@ const PaymentProcessModal = ({ show, handleClose }) => {
                 src={qrcode}
                 alt="qrcode"
                 className="img-fluid"
-                style={{ maxWidth: "100px" }}
+                style={{ maxWidth: "250px" }}
               />
             </div>
           </div>
