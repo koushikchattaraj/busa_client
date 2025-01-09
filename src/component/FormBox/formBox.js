@@ -14,6 +14,14 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
   const [showModal, setShowModal] = useState(true);
   const [showPaymentProcessModal, setShowPaymentProcessModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+
+  const whatsappLink = "https://chat.whatsapp.com/D6kDwzhyRH81pNkLDBKvbe";
+
+  const handleJoinGroup = () => {
+    window.open(whatsappLink, "_blank");
+  };
+
   const [formData, setFormData] = useState({
     // playerName: "Koushik Chattaraj",
     // playerNickName: "1234567890",
@@ -99,6 +107,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
     try {
       await createPlayer(formData);
       alert("Thank you for the Registration! We will get back to you soon.");
+      setShowSuccessAlert(true);
       setFormData({
         playerName: "",
         playerNickName: "",
@@ -154,8 +163,9 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
             handleClose={() => setShowPaymentProcessModal(false)}
           />
           {isLoading && <Loader />}
-          {!isLoading && (
-            <Container className="form-container">
+
+          <Container className="form-container">
+            {!isLoading && !showSuccessAlert && (
               <Form
                 onSubmit={handleSubmit}
                 className="registration-form"
@@ -465,8 +475,36 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                   Submit
                 </Button>
               </Form>
-            </Container>
-          )}
+            )}
+            {showSuccessAlert && (
+              <div className="alert alert-success" role="alert">
+                <div className="container text-center py-5">
+                  <h4 className="mb-4">Thank you for the Registration!</h4>
+                  <div className="row justify-content-center">
+                    <div className="col-md-6 col-sm-12">
+                      <div className="card shadow">
+                        <div className="card-body">
+                          <h3 className="card-title mb-3">
+                            Join Our WhatsApp Group
+                          </h3>
+                          <p className="card-text">
+                            Stay connected and receive updates directly in our
+                            WhatsApp group!
+                          </p>
+                          <button
+                            className="btn btn-success btn-lg"
+                            onClick={handleJoinGroup}
+                          >
+                            Join Now
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </Container>
         </>
       )}
     </>

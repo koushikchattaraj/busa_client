@@ -1,0 +1,32 @@
+.team-banner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px; /* Space between images */
+    padding: 16px;
+    max-width: 100%; /* Ensure full responsiveness */
+    width: 100vw; /* Take the full viewport width */
+  }
+  
+  .image-wrapper {
+    width: 100%; /* Full width of the screen */
+  }
+  
+  .team-banner-image {
+    width: 100%; /* Ensure image scales with its container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover to maintain full width without distortion */
+    border-radius: 8px; /* Optional for rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Optional for shadow effect */
+  }
+
+  @media (min-width: 1024px) {
+    .team-banner-container {
+      padding: 0; /* Remove extra padding for a cleaner desktop layout */
+    }
+  
+    .team-banner-image {
+      border-radius: 0; /* Remove rounded corners for edge-to-edge images */
+    }
+  }
+  
