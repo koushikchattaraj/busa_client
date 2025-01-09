@@ -106,7 +106,6 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
     setIsLoading(true);
     try {
       await createPlayer(formData);
-      alert("Thank you for the Registration! We will get back to you soon.");
       setShowSuccessAlert(true);
       setFormData({
         playerName: "",
