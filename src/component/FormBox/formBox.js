@@ -7,10 +7,8 @@ import lalmati from "../../assets/images/lalmati.png";
 import TandCModal from "../TandCModal/TandCModal";
 import Loader from "../Loader/Loader";
 import PaymentProcessModal from "../PaymentProcessModal/PaymentProcessModal";
-import { useNavigate } from "react-router-dom";
 
 const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
-  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(true);
   const [showPaymentProcessModal, setShowPaymentProcessModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -135,14 +133,13 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
       });
       setPhotoPreview(null);
       setIsLoading(false);
-      navigate("/");
     } catch (error) {
       setIsLoading(false);
       alert(
         error?.response?.data?.message || "Player registration unsuccessful!"
       );
     }
-  }, [formData, navigate]);
+  }, [formData]);
 
   return (
     <>
