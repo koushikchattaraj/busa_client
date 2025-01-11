@@ -359,7 +359,8 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                         <option value="">Player Type</option>
                         <option value="batsman">Batsman</option>
                         <option value="bowler">Bowler</option>
-                        <option value="allRounder">AllRounder</option>
+                        <option value="battingAllRounder">Batting AllRounder</option>
+                        <option value="bowlingallRounder">Bowling AllRounder</option>
                       </Form.Control>
                     </Form.Group>
                   </Col>
@@ -376,6 +377,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                         <option value="pace">Pace</option>
                         <option value="legSpin">Leg Spin</option>
                         <option value="offSpin">Off Spin</option>
+                        <option value="na">NA</option>
                       </Form.Control>
                     </Form.Group>
                   </Col>

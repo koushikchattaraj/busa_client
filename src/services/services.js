@@ -8,6 +8,7 @@ const apiClient = axios.create({
     "Content-Type": "application/json",
   },
 });
+console.log(process.env.REACT_APP_API_BASE_URL);
 
 export default apiClient;
 
@@ -39,11 +40,6 @@ export const getPlayerById = (id) => {
   return apiClient.get(`/api/players/${id}`);
 };
 
-export const rozarpay = () => {
-  const data = {
-    amount: 31100,
-    currency: "INR",
-    receipt: "order_rcptid_11",
-  };
-  return apiClient.post("/create-order", data);
+export const verifiedPayment = (userData) => {
+  return apiClient.post(`/api/players/verify-payment-proof`, userData);
 };
