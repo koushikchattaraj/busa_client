@@ -31,8 +31,10 @@ export const PlayerDetails = () => {
   }, []);
 
   useEffect(() => {
-    console.log(playerDetails);
-  }, [playerDetails]);
+    if (playerId) {
+      getPlayerDetails(playerId);
+    }
+  }, [getPlayerDetails, playerId]);
 
   useEffect(() => {
     if (idFromParams) {
@@ -40,11 +42,7 @@ export const PlayerDetails = () => {
     }
   }, [idFromParams]);
 
-  useEffect(() => {
-    if (playerId) {
-      getPlayerDetails(playerId);
-    }
-  }, [getPlayerDetails, playerId]);
+
 
   return (
     <div className="PlayerDetailsBody">

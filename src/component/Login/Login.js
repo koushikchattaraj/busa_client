@@ -10,9 +10,12 @@ const Login = () => {
 
   const login = () => {
     function generateToken() {
-      return Math.random().toString(36).substring(2);
+      return process.env.REACT_APP_AUTH_TOKEN;
     }
-    if (username === "admin" && password === "admin") {
+    if (
+      username === process.env.REACT_APP_USERNAME &&
+      password === process.env.REACT_APP_PASSWORD
+    ) {
       localStorage.setItem("authToken", generateToken());
       navigate("/players");
     } else {

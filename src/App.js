@@ -12,11 +12,13 @@ import { useIsFeatureEnabled } from "./util/util";
 import { Teams } from "./component/Teams/Teams";
 import { About } from "./component/About/About";
 import { Contact } from "./component/Contact/Contact";
+import { PlayerVerification } from "./component/PlayerVerification/PlayerVerification";
 
 function App() {
   const isPlayerRegistrationFeatureEnabled = useIsFeatureEnabled(
     "PLAYER_REGISTRATION"
   );
+  const isPlayerVerificationFeatureEnabled = false;
   return (
     <div className="App">
       <Router>
@@ -51,6 +53,20 @@ function App() {
             <Route
               path="/players_details/:id"
               element={<ProtectedRoute element={<PlayerDetails />} />}
+            />
+            <Route
+              path="/players_verification"
+              element={
+                <ProtectedRoute
+                  element={
+                    <PlayerVerification
+                      isPlayerVerificationFeatureEnabled={
+                        isPlayerVerificationFeatureEnabled
+                      }
+                    />
+                  }
+                />
+              }
             />
             <Route path="/teams" element={<Teams />} />
             <Route path="/about" element={<About />} />

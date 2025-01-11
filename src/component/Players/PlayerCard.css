@@ -1,0 +1,120 @@
+.player-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: 20px;
+    padding: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .player-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card-image {
+    width: 275px;
+    height: 275px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #f3f4f6;
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .card-details {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .card-details h2 {
+    font-size: 1.5rem;
+    color: #1f2937;
+    margin: 10px 0;
+  }
+  
+  .card-details .nickname {
+    font-size: 1rem;
+    color: #4b5563;
+    margin: 5px 0;
+  }
+  
+  .card-details p {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 3px 0;
+  }
+  
+  .under-21-label-circle {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ff4757;
+    border-radius: 50%;
+    color: #ff4757;
+    font-size: 0.625rem;
+    font-weight: bold;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+
+  .playerId {
+    position: absolute;
+    top: -2px;
+    left: -4px;
+    background: rgba(83, 120, 240, 0.3); /* Transparent blue */
+    color: #ffffff; /* White text */
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 7px 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    backdrop-filter: blur(10px); /* Glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .player-card {
+      max-width: 90%;
+      padding: 15px;
+    }
+  
+    .card-image {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .card-details h2 {
+      font-size: 1.3rem;
+    }
+  
+    .card-details p {
+      font-size: 0.8rem;
+    }
+  
+    .under-21-label {
+      font-size: 0.7rem;
+    }
+  }
+  

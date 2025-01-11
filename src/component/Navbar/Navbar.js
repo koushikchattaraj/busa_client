@@ -6,6 +6,7 @@ import {
   Form,
   FormControl,
   Button,
+  NavDropdown,
 } from "react-bootstrap";
 import isAuthenticated from "../../auth";
 import { useNavigate } from "react-router-dom";
@@ -80,10 +81,17 @@ const MyNavbar = () => {
             </Nav.Link>
             {isAuthenticatedUser ? (
               <>
+                <NavDropdown title="Player Deatils" id="basic-nav-dropdown">
+                  <NavDropdown.Item onClick={() => handleNavigate("/players")}>
+                    Players
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    onClick={() => handleNavigate("/players_verification")}
+                  >
+                    Players Verification
+                  </NavDropdown.Item>
+                </NavDropdown>
                 <Nav.Link onClick={logout}>Logout</Nav.Link>
-                <Nav.Link onClick={() => handleNavigate("/players")}>
-                  Players
-                </Nav.Link>
               </>
             ) : (
               <Nav.Link onClick={() => handleNavigate("/login")}>
@@ -92,7 +100,6 @@ const MyNavbar = () => {
             )}
           </Nav>
 
-          {/* Search Form (Shown for Authenticated Users) */}
           {isAuthenticatedUser && (
             <Form className="d-flex ms-3">
               <FormControl
