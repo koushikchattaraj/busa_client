@@ -18,9 +18,7 @@ function App() {
   const isPlayerRegistrationFeatureEnabled = useIsFeatureEnabled(
     "PLAYER_REGISTRATION"
   );
-  const isPlayerVerificationFeatureEnabled = useIsFeatureEnabled(
-    "PLAYER_VERIFICATION"
-  );
+  const isPlayerVerificationFeatureEnabled = false;
   return (
     <div className="App">
       <Router>
