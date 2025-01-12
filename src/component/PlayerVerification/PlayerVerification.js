@@ -35,7 +35,8 @@ export const PlayerVerification = ({ isPlayerVerificationFeatureEnabled }) => {
     setIsLoading(true);
     try {
       const data = await getAllPlayers();
-      setPlayers(filterUnverifiedPayments(data.data));
+      const sortedData = data.data.sort((a, b) => b?.playerId - a?.playerId);
+      setPlayers(filterUnverifiedPayments(sortedData));
       setApiStatus("success");
       setIsLoading(false);
     } catch (error) {

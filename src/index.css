@@ -29,7 +29,7 @@
 
   .player-grid {
     display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjust 200px as needed */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust 200px as needed */
   gap: 20px;
   padding: 20px;
   }
@@ -50,10 +50,25 @@
     border-radius: 10px;
   }
 
-  .player-grid-header{
+  .player-grid-header {
+    margin: 20px auto;
+  }
+  
+  .downloadButton {
     display: flex;
+    align-items: center;
     justify-content: center;
-    flex-direction: column;
+    gap: 8px; /* Space between icon and text */
+    padding: 8px 16px; /* Adjust padding as needed */
+    font-size: 35px;
+  }
+  
+  .search-bar {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
   }
 
 
@@ -394,17 +409,6 @@
     margin: 15px auto;
   }
 
-  .downloadButton
-  {
-    border-radius: 50%;
-    border: 0;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    cursor: pointer;
-    height: 30px;
-    width: 30px;
-  }
 
   .playerno-label{
     font-size: 1.5rem;
