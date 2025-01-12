@@ -3,6 +3,7 @@ import { getAllPlayers } from "../../services/services";
 import PlayerCard from "./PlayerCard";
 import { FaDownload } from "react-icons/fa";
 import * as XLSX from "xlsx";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 const Players = () => {
   const [isVerified, setIsVerified] = useState(false);
@@ -90,8 +91,9 @@ const Players = () => {
   const handleFetch = useCallback(async () => {
     try {
       const data = await getAllPlayers();
-      setRegisteredPlayers(data.data);
-      setPlayers(data.data);
+      const sortedData = data.data.sort((a, b) => b?.playerId - a?.playerId);
+      setRegisteredPlayers(sortedData);
+      setPlayers(sortedData);
     } catch (error) {
       console.log(error);
     }
@@ -109,52 +111,52 @@ const Players = () => {
 
   return (
     <div className="playerBody">
-      <div className="player-grid-header">
-        <div
-          style={{
-            display: "flex",
-            gap: "10px",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <h1 style={{ textAlign: "center" }}>Player Cards</h1>
-          <button
-            className="downloadButton"
-            onClick={handlePlayersDownload}
-            isDisable={players.length === 0}
-          >
-            <FaDownload />
-          </button>
-          <div
-            className="form-check d-flex justify-content-center align-items-center"
-            style={{ gap: "10px" }}
-          >
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="verifiedPlayerCheckbox"
-              checked={isVerified}
-              onChange={handleCheckboxChange}
-              style={{ cursor: "pointer", width: "20px", height: "20px" }}
+      <Container fluid className="player-grid-header">
+        <Row className="justify-content-center text-center mb-3">
+          <Col xs={12} md={8} className="d-flex flex-column align-items-center">
+            <h1>Player Cards</h1>
+            <div className="d-flex flex-wrap justify-content-center align-items-center gap-3 mt-2">
+              <Button
+                className="downloadButton d-flex align-items-center justify-content-center"
+                onClick={handlePlayersDownload}
+                disabled={players.length === 0}
+                variant="primary"
+              >
+                <FaDownload />
+              </Button>
+              <Form.Group
+                controlId="verifiedPlayerCheckbox"
+                className="d-flex align-items-center gap-2"
+              >
+                <input
+                  type="checkbox"
+                  checked={isVerified}
+                  onChange={handleCheckboxChange}
+                  style={{ cursor: "pointer", width: "20px", height: "20px" }}
+                />
+                <Form.Label
+                  htmlFor="verifiedPlayerCheckbox"
+                  className="mb-0"
+                  style={{ cursor: "pointer" }}
+                >
+                  Verified Players
+                </Form.Label>
+              </Form.Group>
+            </div>
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col xs={12} md={8}>
+            <Form.Control
+              type="text"
+              placeholder="Search by player Name / Id..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-bar"
             />
-            <label
-              className="form-check-label"
-              htmlFor="verifiedPlayerCheckbox"
-              style={{ cursor: "pointer", marginTop: "5px" }}
-            >
-              Verified Players
-            </label>
-          </div>
-        </div>
-        <input
-          type="text"
-          placeholder="Search by player Name / Id..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-bar"
-        />
-      </div>
+          </Col>
+        </Row>
+      </Container>
       <div className="player-grid">
         {registeredPlayers.length === 0 && filteredPlayers.length === 0 && (
           <>

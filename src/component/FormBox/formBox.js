@@ -7,12 +7,16 @@ import lalmati from "../../assets/images/lalmati.png";
 import TandCModal from "../TandCModal/TandCModal";
 import Loader from "../Loader/Loader";
 import PaymentProcessModal from "../PaymentProcessModal/PaymentProcessModal";
+import { useNavigate } from "react-router-dom";
 
 const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(true);
   const [showPaymentProcessModal, setShowPaymentProcessModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [showErrorAlert, setShowErrorAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const whatsappLink = "https://chat.whatsapp.com/D6kDwzhyRH81pNkLDBKvbe";
 
@@ -20,56 +24,75 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
     window.open(whatsappLink, "_blank");
   };
 
-  const [formData, setFormData] = useState({
-    // playerName: "Koushik Chattaraj",
-    // playerNickName: "1234567890",
-    // dob: "1998-10-28",
-    // weight: "85",
-    // height: "5'11",
-    // tShirtSize: "m",
-    // mobile: "1234567890",
-    // aadharId: "1234-5678-9012",
-    // address: "123 Street",
-    // district: "Example District",
-    // state: "Example State",
-    // pinCode: "123456",
-    // playerType: "batsman",
-    // battingArm: "right",
-    // bowlingArm: "right",
-    // bowlingPace: "pace",
-    // wicketKeeper: "no",
-    // preferredJerseyNumber: "18",
-    // preferredJerseyName: "Koushik",
-    // year: "2025",
-    // league: "lalmatir_cricket_league",
-    // season: "s1",
-    // photo: null,
-    // uploadPaymentProof: null,
+  const handleReport = () => {
+    const errorText =
+      typeof errorMessage === "string"
+        ? errorMessage
+        : JSON.stringify(errorMessage?.data, null, 2);
+    const phoneNumber = "+916294959483";
+    const message = `
+    Name: ${formData.playerName}
+    Mobile No: ${formData.mobile}
+    Aadhar Id: ${formData.aadharId}
+    Error Message: ${errorText || ""}
+    `.trim();
 
-    playerName: "",
-    playerNickName: "",
-    dob: "",
-    weight: "",
-    height: "",
-    tShirtSize: "",
-    mobile: "",
-    aadharId: "",
-    address: "",
-    district: "",
-    pinCode: "",
-    playerType: "",
-    battingArm: "",
-    bowlingArm: "",
-    bowlingPace: "",
-    wicketKeeper: "",
-    preferredJerseyNumber: "",
-    preferredJerseyName: "",
-    state: "WB",
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, "_blank");
+    navigate("/");
+  };
+
+  const [formData, setFormData] = useState({
+    playerName: "Koushik Chattaraj",
+    playerNickName: "1234567890",
+    dob: "1998-10-28",
+    weight: "85",
+    height: "5'11",
+    tShirtSize: "m",
+    mobile: "1234567890",
+    aadharId: "1234-5678-9012",
+    address: "123 Street",
+    district: "Example District",
+    state: "Example State",
+    pinCode: "123456",
+    playerType: "batsman",
+    battingArm: "right",
+    bowlingArm: "right",
+    bowlingPace: "pace",
+    wicketKeeper: "no",
+    preferredJerseyNumber: "18",
+    preferredJerseyName: "Koushik",
     year: "2025",
     league: "lalmatir_cricket_league",
     season: "s1",
     photo: null,
     uploadPaymentProof: null,
+
+    // playerName: "",
+    // playerNickName: "",
+    // dob: "",
+    // weight: "",
+    // height: "",
+    // tShirtSize: "",
+    // mobile: "",
+    // aadharId: "",
+    // address: "",
+    // district: "",
+    // pinCode: "",
+    // playerType: "",
+    // battingArm: "",
+    // bowlingArm: "",
+    // bowlingPace: "",
+    // wicketKeeper: "",
+    // preferredJerseyNumber: "",
+    // preferredJerseyName: "",
+    // state: "WB",
+    // year: "2025",
+    // league: "lalmatir_cricket_league",
+    // season: "s1",
+    // photo: null,
+    // uploadPaymentProof: null,
   });
   const [photoPreview, setPhotoPreview] = useState(null);
 
@@ -135,9 +158,8 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      alert(
-        error?.response?.data?.message || "Player registration unsuccessful!"
-      );
+      setShowErrorAlert(true);
+      setErrorMessage(error?.response);
     }
   }, [formData]);
 
@@ -161,7 +183,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
           {isLoading && <Loader />}
 
           <Container className="form-container">
-            {!isLoading && !showSuccessAlert && (
+            {!isLoading && !showSuccessAlert && !showErrorAlert && (
               <Form
                 onSubmit={handleSubmit}
                 className="registration-form"
@@ -359,8 +381,12 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                         <option value="">Player Type</option>
                         <option value="batsman">Batsman</option>
                         <option value="bowler">Bowler</option>
-                        <option value="battingAllRounder">Batting AllRounder</option>
-                        <option value="bowlingallRounder">Bowling AllRounder</option>
+                        <option value="battingAllRounder">
+                          Batting AllRounder
+                        </option>
+                        <option value="bowlingallRounder">
+                          Bowling AllRounder
+                        </option>
                       </Form.Control>
                     </Form.Group>
                   </Col>
@@ -494,6 +520,37 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                             onClick={handleJoinGroup}
                           >
                             Join Now
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            {showErrorAlert && (
+              <div className="alert alert-danger" role="alert">
+                <div className="container text-center py-5">
+                  <h4 className="mb-4">Sorry Registration Failed!</h4>
+                  <div className="row justify-content-center">
+                    <div className="col-md-6 col-sm-12">
+                      <div className="card shadow">
+                        <div
+                          className="card-body"
+                          style={{ background: "red", color: "white" }}
+                        >
+                          <h3 className="card-title mb-3">
+                            {errorMessage?.data?.message?.length > 0 &&
+                            errorMessage?.data?.message ===
+                              "A player with the same mobile or aadharId already exists"
+                              ? "Your Mobile No or Aadhar Id Already Exists"
+                              : "Player registration unsuccessful!"}
+                          </h3>
+                          <button
+                            className="btn btn-warning btn-lg"
+                            onClick={handleReport}
+                          >
+                            Report Now
                           </button>
                         </div>
                       </div>

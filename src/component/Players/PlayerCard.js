@@ -53,13 +53,15 @@ const PlayerCard = ({ player }) => {
       <div className="card-image">
         <img src={data.photo} alt={`${data.playerName}'s Profile`} />
       </div>
-      <div className="card-details">
-        <h2>{data.playerName}</h2>
-        <p className="nickname">Nickname: {data.playerNickName}</p>
-        <p>
+      <div className="card-details" style={{ color: "white" }}>
+        <h2 style={{ color: "white" }}>{data.playerName}</h2>
+        <p className="nickname" style={{ color: "white" }}>
+          Nickname: {data.playerNickName}
+        </p>
+        <p style={{ color: "white" }}>
           <strong>District:</strong> {data.district}
         </p>
-        <p>
+        <p style={{ color: "white" }}>
           <strong>Player Type:</strong> {data.playerType}
         </p>
       </div>
