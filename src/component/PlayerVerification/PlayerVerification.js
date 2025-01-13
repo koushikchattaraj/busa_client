@@ -6,23 +6,27 @@ export const PlayerVerification = ({ isPlayerVerificationFeatureEnabled }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [players, setPlayers] = useState([]);
   const [apiStatus, setApiStatus] = useState("");
+  const token = localStorage.getItem("authToken");
 
   const handleVerify = async (status, playerData) => {
+    setIsLoading(true);
     const userData = {
       playerId: playerData.playerId,
       league: playerData.tournaments[0].league,
       season: playerData.tournaments[0].season,
       paymentVerified: status === "verify" ? true : false,
+      token: token,
     };
     try {
       await verifiedPayment(userData);
+      setIsLoading(false);
       setPlayers((prevPlayers) =>
         prevPlayers.filter((player) => player.playerId !== playerData.playerId)
       );
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
-    console.log(userData);
   };
 
   function filterUnverifiedPayments(players) {
