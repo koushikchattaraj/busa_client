@@ -384,7 +384,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                         <option value="battingAllRounder">
                           Batting AllRounder
                         </option>
-                        <option value="bowlingallRounder">
+                        <option value="bowlingAllRounder">
                           Bowling AllRounder
                         </option>
                       </Form.Control>

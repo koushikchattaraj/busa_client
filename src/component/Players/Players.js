@@ -22,6 +22,7 @@ const Players = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+
   const handlePlayersDownload = () => {
     // Define the columns you want to export and their corresponding header names
     const columns = [
