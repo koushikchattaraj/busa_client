@@ -45,6 +45,22 @@ const PlayerCard = ({ player }) => {
 
   const age = calculateAge(data.dob);
 
+  const convertToTitleCase = (str) => {
+    if (str === undefined) return "";
+    return str
+      .replace(/([A-Z])/g, " $1")
+      .replace(/^./, (char) => char.toUpperCase());
+  };
+
+  function toProperCase(input) {
+    if (input === undefined) return "";
+    return input
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+
   return (
     // <div onClick={downloadImage} style={{ cursor: "pointer" }}>
     <div className="player-card" ref={cardRef}>
@@ -54,16 +70,16 @@ const PlayerCard = ({ player }) => {
         <img src={data.photo} alt={`${data.playerName}'s Profile`} />
       </div>
       <div className="card-details" style={{ color: "white" }}>
-        <h2 style={{ color: "white" }}>{data.playerName}</h2>
+        <h2 style={{ color: "white" }}>{toProperCase(data?.playerName)}</h2>
         <p className="nickname" style={{ color: "white" }}>
-          Nickname: {data.playerNickName}
+          {toProperCase(data?.playerNickName)}
         </p>
         <p style={{ color: "white" }}>
-          <strong>District:</strong> {data.district}
+          <strong>District:</strong> {toProperCase(data?.district)}
         </p>
-        <p style={{ color: "white" }}>
-          <strong>Player Type:</strong> {data.playerType}
-        </p>
+        <h4 style={{ color: "white" }}>
+          <strong>{convertToTitleCase(data?.playerType)}</strong>
+        </h4>
       </div>
     </div>
     // </div>
