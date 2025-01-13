@@ -1,32 +1,25 @@
 import React, { useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./PlayerCard.css";
-import { toPng } from "html-to-image";
+// import { toPng } from "html-to-image";
+import { convertToTitleCase, toProperCase } from "../../util/util";
 
 const PlayerCard = ({ player }) => {
   const data = player;
 
   const cardRef = useRef(null);
 
-  const downloadImage = async () => {
-    try {
-      if (!cardRef.current) return;
-      const dataUrl = await toPng(cardRef.current, { cacheBust: true });
-      const link = document.createElement("a");
-      link.download = `${data.playerName}-profile.png`;
-      link.href = dataUrl;
-      link.click();
-    } catch (err) {
-      console.error("Error generating image:", err);
-    }
-  };
-
-  // const formatDate = (dateString) => {
-  //   const date = new Date(dateString);
-  //   const day = String(date.getDate()).padStart(2, "0");
-  //   const month = String(date.getMonth() + 1).padStart(2, "0");
-  //   const year = date.getFullYear();
-  //   return `${day}-${month}-${year}`;
+  // const downloadImage = async () => {
+  //   try {
+  //     if (!cardRef.current) return;
+  //     const dataUrl = await toPng(cardRef.current, { cacheBust: true });
+  //     const link = document.createElement("a");
+  //     link.download = `${data.playerName}-profile.png`;
+  //     link.href = dataUrl;
+  //     link.click();
+  //   } catch (err) {
+  //     console.error("Error generating image:", err);
+  //   }
   // };
 
   const calculateAge = (dob) => {
@@ -44,22 +37,6 @@ const PlayerCard = ({ player }) => {
   };
 
   const age = calculateAge(data.dob);
-
-  const convertToTitleCase = (str) => {
-    if (str === undefined) return "";
-    return str
-      .replace(/([A-Z])/g, " $1")
-      .replace(/^./, (char) => char.toUpperCase());
-  };
-
-  function toProperCase(input) {
-    if (input === undefined) return "";
-    return input
-      .toLowerCase()
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  }
 
   return (
     // <div onClick={downloadImage} style={{ cursor: "pointer" }}>

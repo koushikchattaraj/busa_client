@@ -2,33 +2,38 @@ import flagsmith from "flagsmith";
 import { useState, useEffect } from "react";
 
 // Custom hook to initialize Flagsmith and get feature flags
-const useFeatureFlags = () => {
+export const useFeatureFlags = () => {
   const [featureFlags, setFeatureFlags] = useState({});
-
   useEffect(() => {
-    flagsmith.init({
-      environmentID: process.env.REACT_APP_FLAGSMITH_ENVIRONMENT_ID,
-      onChange: () => {
-        setFeatureFlags(flagsmith.getAllFlags());
-      },
-      onError: (error) => {
-        console.error("Flagsmith initialization error:", error);
-      },
-    });
-  }, []); // Empty dependency array ensures this runs once on mount
+    if (Object.keys(featureFlags).length === 0) {
+      flagsmith.init({
+        environmentID: process.env.REACT_APP_FLAGSMITH_ENVIRONMENT_ID,
+        onChange: () => {
+          setFeatureFlags(flagsmith.getAllFlags());
+        },
+        onError: (error) => {
+          console.error("Flagsmith initialization error:", error);
+        },
+      });
+    }
+  }, [featureFlags]); // Dependency array includes featureFlags to check for changes
 
   return featureFlags;
 };
 
-// Custom hook to check if a feature is enabled
-export const useIsFeatureEnabled = (featureKey) => {
-  const featureFlags = useFeatureFlags();
-
-  // Check if the feature exists in the flags object
-  if (featureFlags && featureFlags[featureKey.toLowerCase()]) {
-    return featureFlags[featureKey.toLowerCase()].enabled;
-  }
-
-  // Return null if the feature is not found
-  return null;
+export const convertToTitleCase = (str) => {
+  if (str === undefined) return "";
+  return str
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, (char) => char.toUpperCase());
 };
+
+export function toProperCase(input) {
+  if (input === undefined) return "";
+  if (typeof input !== "string") return input;
+  return input
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}

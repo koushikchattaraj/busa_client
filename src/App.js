@@ -8,17 +8,27 @@ import Login from "./component/Login/Login";
 import { PlayerDetails } from "./component/PlayerDetails/PlayerDetails";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./component/Navbar/Navbar";
-import { useIsFeatureEnabled } from "./util/util";
+import { useFeatureFlags } from "./util/util";
 import { Teams } from "./component/Teams/Teams";
 import { About } from "./component/About/About";
 import { Contact } from "./component/Contact/Contact";
 import { PlayerVerification } from "./component/PlayerVerification/PlayerVerification";
 
 function App() {
+  const featureFlags = useFeatureFlags();
+  const useIsFeatureEnabled = (featureKey) => {
+    if (featureFlags && featureFlags[featureKey.toLowerCase()]) {
+      return featureFlags[featureKey.toLowerCase()].enabled;
+    }
+    return null;
+  };
+
   const isPlayerRegistrationFeatureEnabled = useIsFeatureEnabled(
     "PLAYER_REGISTRATION"
   );
-  const isPlayerVerificationFeatureEnabled = false;
+  const isPlayerVerificationFeatureEnabled = useIsFeatureEnabled(
+    "PLAYER_VERIFICATION"
+  );
   return (
     <div className="App">
       <Router>
