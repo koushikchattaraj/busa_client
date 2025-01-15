@@ -45,6 +45,7 @@ const Players = () => {
       { key: "dob", header: "Date of Birth" },
       { key: "mobile", header: "Mobile No" },
       { key: "aadharId", header: "Aadhar Id" },
+      { key: "address", header: "Address" },
       { key: "district", header: "District" },
       { key: "playerType", header: "Player Type" },
       { key: "battingArm", header: "Batting Arm" },
