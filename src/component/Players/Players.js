@@ -6,6 +6,7 @@ import * as XLSX from "xlsx";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Loader from "../Loader/Loader";
 import { convertToTitleCase, toProperCase } from "../../util/util";
+import NewCard from "./NewCard/NewCard";
 
 const Players = () => {
   const [isVerified, setIsVerified] = useState(false);
@@ -214,13 +215,24 @@ const Players = () => {
           </Col>
         </Row>
       </Container>
-      <div className="player-grid">
+      <div className="player-grid1">
         {isLoading && <Loader />}
         {!isLoading && filteredPlayers.length !== 0 ? (
           <>
             {filteredPlayers.map((player) => (
               // <div className="d-flex">
-              <PlayerCard key={player._id} player={player} />
+              // <PlayerCard key={player._id} player={player} />
+              <NewCard
+                playerName={player.playerName}
+                playerId={player.playerId}
+                nickname={player.playerNickName}
+                district={player.district}
+                playerType={player.playerType}
+                battingArm={player.battingArm}
+                bowlingArm={player.bowlingArm}
+                dob={player.dob}
+                image={player.photo}
+              />
               // </div>
             ))}
           </>

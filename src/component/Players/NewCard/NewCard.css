@@ -1,0 +1,127 @@
+.cardBackgroundImg{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+    padding: 5%;
+}
+
+.cardTextPlayerImage{
+    position: absolute;
+    top: 20%;
+    left: 11%;
+    height: 60%;
+    width: 32%;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.cardTextContainar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 24%;
+    right: 17%;
+
+}
+
+.cardFontNameView{
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0px 3px 2px #ccc, 
+               0px 8px 10px rgba(0,0,0,0.15), 
+               0px 12px 2px rgba(0,0,0,0.7);
+}
+
+.cardFontView{
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+}
+
+.cardTextNickName{
+    margin-top: 1rem;
+}
+
+.cardTextPlayerId{
+    position: absolute;
+    top: 10%;
+    right: 8%;
+}
+
+.cardTextU21{
+    position: absolute;
+    top: 10%;
+    right: 8%;
+}
+
+.cardTextU21Circle{
+top: 0px;
+right: 0px;
+width: 50px;
+height: 50px;
+display: flex
+;
+justify-content: center;
+align-items: center;
+border: 2px solid #ff4757;
+border-radius: 50%;
+color: #ff4757;
+font-size: 0.625rem;
+font-weight: bold;
+background-color: #ffffff;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/*
+.cardTextName{
+    position: absolute;
+    top: 24%;
+    right: 20%;
+}
+
+.cardTextNickName{
+    position: absolute;
+    top: 35%;
+    right: 28%;
+}
+
+.cardTextDistrict{
+    position: absolute;
+    top: 45%;
+    right: 28%;
+}
+
+.cardTextPlayerType {
+    position: absolute;
+    top: 55%;
+    right: 28%;
+}
+
+.cardTextBattingArm{
+    position: absolute;
+    top: 65%;
+    right: 28%;
+    text-align: center;
+}
+
+.cardTextBowlingArm{
+    position: absolute;
+    top: 75%;
+    right: 28%;
+} */
+
