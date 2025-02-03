@@ -33,7 +33,7 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
         </h1>
         {!isPlayerRegistrationFeatureEnabled && (
           <h3 className="text-center color-white">
-            Player Registration will start on 12th Janury 2025 10:00 AM
+            Player Registration will reopen soon
           </h3>
         )}
         {isPlayerRegistrationFeatureEnabled && (
