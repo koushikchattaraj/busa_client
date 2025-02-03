@@ -33,7 +33,7 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
         </h1>
         {!isPlayerRegistrationFeatureEnabled && (
           <h3 className="text-center color-white">
-            Player Registration will start on 12th Janury 2025 10:00 AM
+            Player Registration will reopen soon
           </h3>
         )}
         {isPlayerRegistrationFeatureEnabled && (
@@ -49,7 +49,7 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
               </button>
             </div>
             <h3 className="text-center color-white mt-2">
-              Registration window will close by 31th Janury 2025 11:59 PM
+              Registration window will close by 1st February 2025 7:00 PM
             </h3>
           </>
         )}
