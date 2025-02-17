@@ -33,7 +33,7 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
         </h1>
         {!isPlayerRegistrationFeatureEnabled && (
           <h3 className="text-center color-white">
-            Player Registration will reopen soon
+            Auction Date : 2nd March 2025 || Chhatna Auditorium
           </h3>
         )}
         {isPlayerRegistrationFeatureEnabled && (
