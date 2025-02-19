@@ -6,9 +6,6 @@ import { convertToTitleCase, toProperCase } from "../../util/util";
 
 const PlayerCard = ({ player }) => {
   const data = player;
-
-  console.log(data, "------");
-
   const cardRef = useRef(null);
 
   const downloadImage = async () => {
@@ -62,9 +59,16 @@ const PlayerCard = ({ player }) => {
         </div>
         <div className="card-details" style={{ color: "white" }}>
           <h2 style={{ color: "white" }}>{toProperCase(data?.playerName)}</h2>
-          <p className="nickname" style={{ color: "white" }}>
-            {toProperCase(data?.playerNickName)}
-          </p>
+
+          {data?.playerNickName?.length > 0 ? (
+            <p className="nickname" style={{ color: "white" }}>
+              {toProperCase(data?.playerNickName)}
+            </p>
+          ) : (
+            <p className="nickname" style={{ color: "white" }}>
+              {toProperCase((data?.playerName).split(" ")[0])}
+            </p>
+          )}
           <p style={{ color: "white" }}>
             <strong>
               {toProperCase(data?.address)} || {toProperCase(data?.district)}

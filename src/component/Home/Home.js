@@ -32,9 +32,21 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
           Welcome to Lal Matir Cricket Leauge
         </h1>
         {!isPlayerRegistrationFeatureEnabled && (
-          <h3 className="text-center color-white">
-            Auction Date : 2nd March 2025 || Chhatna Auditorium
-          </h3>
+          <>
+            <h3 className="text-center color-white">
+              Auction Date : 2nd March 2025 || Chhatna Auditorium
+            </h3>
+            <div className="buttonbox">
+              <button
+                class="button-85"
+                onClick={() => {
+                  navigate("/view_players");
+                }}
+              >
+                View Registred Players
+              </button>
+            </div>
+          </>
         )}
         {isPlayerRegistrationFeatureEnabled && (
           <>
@@ -51,6 +63,7 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
             <h3 className="text-center color-white mt-2">
               Registration window will close by 25th February 2025 7:00 PM
             </h3>
+            test
           </>
         )}
       </div>
