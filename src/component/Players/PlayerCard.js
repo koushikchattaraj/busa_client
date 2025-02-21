@@ -55,7 +55,11 @@ const PlayerCard = ({ player }) => {
         {age < 21 && <div className="under-21-label-circle">Under 21</div>}
         <div className="playerId">{data.playerId}</div>
         <div className="card-image">
-          <img src={data.photo} alt={`${data.playerName}'s Profile`} />
+          <img
+            src={data.photo}
+            alt={`${data.playerName}'s Profile`}
+            loading="lazy"
+          />
         </div>
         <div className="card-details" style={{ color: "white" }}>
           <h2 style={{ color: "white" }}>{toProperCase(data?.playerName)}</h2>
