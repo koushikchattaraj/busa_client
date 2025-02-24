@@ -16,7 +16,7 @@ const NewCard = ({
 }) => {
   const calculateAge = (dob) => {
     const birthDate = new Date(dob);
-    const today = new Date();
+    const today = new Date('2025-01-01');
     let age = today.getFullYear() - birthDate.getFullYear();
     const monthDiff = today.getMonth() - birthDate.getMonth();
     if (
