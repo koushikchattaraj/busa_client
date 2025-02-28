@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FormBox from "./component/FormBox/formBox";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import Players from "./component/Players/Players";
 import Home from "./component/Home/Home";
 import ProtectedRoute from "./ProtectedRoute";
@@ -13,6 +18,8 @@ import { Teams } from "./component/Teams/Teams";
 import { About } from "./component/About/About";
 import { Contact } from "./component/Contact/Contact";
 import { PlayerVerification } from "./component/PlayerVerification/PlayerVerification";
+import { ViewPlayers } from "./component/ViewPlayers/ViewPlayers";
+import { AuctionTab } from "./component/AuctionTab/AuctionTab";
 
 function App() {
   const featureFlags = useFeatureFlags();
@@ -78,9 +85,14 @@ function App() {
                 />
               }
             />
+            <Route
+              path="/auction"
+              element={<ProtectedRoute element={<AuctionTab />} />}
+            />
             <Route path="/teams" element={<Teams />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/view_players" element={<ViewPlayers />} />
           </Routes>
         </div>
       </Router>

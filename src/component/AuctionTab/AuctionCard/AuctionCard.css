@@ -1,0 +1,131 @@
+/* General Styles */
+.cardBackgroundImg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Player Image */
+.cardTextPlayerImage {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 60%;
+    width: 32%;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+/* Container */
+.cardTextContainar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
+}
+
+/* Player Name */
+.cardFontNameView {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.5rem, 5vw, 7rem);
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0px 3px 2px #ccc, 
+                 0px 8px 10px rgba(0,0,0,0.15), 
+                 0px 12px 2px rgba(0,0,0,0.7);
+}
+
+/* Other Text */
+.cardFontView {
+    font-size: clamp(1rem, 3vw, 3.5rem);
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                 0px 8px 13px rgba(0,0,0,0.1),
+                 0px 18px 23px rgba(0,0,0,0.1);
+}
+
+/* Nickname */
+.cardTextNickName {
+    margin-top: 1rem;
+}
+
+/* Player ID */
+.cardTextPlayerId,
+.cardTextU21 {
+    position: absolute;
+    top:5%;
+    right: 5%;
+    font-size: clamp(0.8rem, 1.2vw, 1.5rem);
+}
+
+/* U21 Circle */
+.cardTextU21Circle {
+    top: 2%;
+    right: 2%;
+    width: clamp(40px, 6vw, 80px);
+    height: clamp(40px, 6vw, 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ff4757;
+    border-radius: 50%;
+    color: #ff4757;
+    font-size: clamp(0.5rem, 1vw, 1rem);
+    font-weight: bold;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .cardBackgroundImg {
+        height: 100vh;
+        width: 100vw;
+        padding: 3%;
+    }
+    .cardTextPlayerImage {
+        height: 50%;
+        width: 40%;
+        top: 15%;
+    }
+    .cardTextContainar {
+        top: 65%;
+        width: 95%;
+    }
+    .cardFontNameView {
+        font-size: 2rem;
+    }
+    .cardFontView {
+        font-size: 1.5rem;
+    }
+    .cardTextPlayerId, .cardTextU21 {
+        font-size: 0.9rem;
+        top: 3%;
+        right: 3%;
+    }
+    .cardTextU21Circle {
+        width: 50px;
+        height: 50px;
+        font-size: 0.7rem;
+    }
+}

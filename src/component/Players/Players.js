@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { getAllPlayers } from "../../services/services";
+// import { getAllPlayers } from "../../services/services";
+import { allPlayerDataResponse } from "../../assets/data/allPlayerDataResponse";
+
 import PlayerCard from "./PlayerCard";
 import { FaDownload } from "react-icons/fa";
 import * as XLSX from "xlsx";
@@ -117,7 +119,7 @@ const Players = () => {
   const handleFetch = useCallback(async () => {
     setIsLoading(true);
     try {
-      const data = await getAllPlayers();
+      const data = allPlayerDataResponse;
       const sortedData = data.data.sort((a, b) => b?.playerId - a?.playerId);
       setRegisteredPlayers(sortedData);
       setPlayers(sortedData);
@@ -220,6 +222,11 @@ const Players = () => {
         {!isLoading && filteredPlayers.length !== 0 ? (
           <>
             {filteredPlayers.map((player) => (
+<<<<<<< HEAD
+              <div className="d-flex">
+                <PlayerCard key={player._id} player={player} />
+              </div>
+=======
               // <div className="d-flex">
               // <PlayerCard key={player._id} player={player} />
               <NewCard
@@ -234,6 +241,7 @@ const Players = () => {
                 image={player.photo}
               />
               // </div>
+>>>>>>> origin/develop
             ))}
           </>
         ) : (
