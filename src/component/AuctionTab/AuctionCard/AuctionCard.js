@@ -1,17 +1,32 @@
 import React from "react";
 import cardBackground from "../../../assets/images/cardBackground.jpg";
 import "./AuctionCard.css";
+import { convertToTitleCase, formatPlayerType } from "../../../util/util";
 
 const AuctionCard = ({
   playerName,
   playerId,
   nickname,
   district,
+  address,
   playerType,
   battingArm,
   bowlingArm,
   image,
 }) => {
+
+  function isBatsman(playerType) {
+    return playerType.toLowerCase().includes("batsman");
+  }
+
+  function isBowler(playerType) {
+    return playerType.toLowerCase().includes("bowler");
+  }
+
+  function isAllRounder(playerType) {
+    return playerType.toLowerCase().includes("allrounder");
+  }
+
   return (
     <div 
       className="auction-card" 
@@ -22,7 +37,7 @@ const AuctionCard = ({
       }}
     >
       {/* Player ID in the top right corner */}
-      <div className="player-id">{playerId}</div>
+      
       
       <div className="auction-card-container">
         {/* Left Side - Player Image */}
@@ -34,12 +49,25 @@ const AuctionCard = ({
 
         {/* Right Side - Player Info */}
         <div className="player-info">
+          <p className="player-id">{playerId}</p>
           <h1 className="player-name">{playerName.toUpperCase()}</h1>
-          <h2 className="player-nickname">{nickname}</h2>
-          <p className="player-district">{district}</p>
-          <h3 className="player-type">{playerType.toUpperCase()}</h3>
-          <p className="player-stats">Batting - {battingArm}</p>
-          <p className="player-stats">Bowling - {bowlingArm}</p>
+          <h2 className="player-nickname">{convertToTitleCase(nickname)}</h2>
+          <p className="player-district">{convertToTitleCase(address)} || {convertToTitleCase(district)}</p>
+          <p className="player-stats">{formatPlayerType(playerType)}</p>
+
+          {isAllRounder(playerType) && (
+            <div>
+                <p className="player-stats">{convertToTitleCase(battingArm)} Batting</p>
+                <p className="player-stats">{convertToTitleCase(bowlingArm)} Bowling</p>
+            </div>
+          )}
+
+          {isBatsman(playerType) && (
+              <p className="player-stats">{convertToTitleCase(battingArm)} Batting</p>
+          )}
+          {isBowler(playerType) && (
+              <p className="player-stats">{convertToTitleCase(bowlingArm)} Bowling</p>
+          )}
         </div>
       </div>
     </div>

@@ -29,6 +29,12 @@ export const convertToTitleCase = (str) => {
   );
 };
 
+export const formatPlayerType = (text) => {
+  return text
+    .replace(/([a-z])([A-Z])/g, "$1 $2") // Add space before uppercase letters
+    .replace(/^./, (str) => str.toUpperCase()); // Capitalize first letter
+};
+
 export function toProperCase(input) {
   if (input === undefined) return "";
   if (typeof input !== "string") return input;
