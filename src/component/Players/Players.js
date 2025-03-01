@@ -1,11 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { getAllPlayers } from "../../services/services";
+// import { getAllPlayers } from "../../services/services";
+import { allPlayerDataResponse } from "../../assets/data/allPlayerDataResponse";
+
 import PlayerCard from "./PlayerCard";
 import { FaDownload } from "react-icons/fa";
 import * as XLSX from "xlsx";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Loader from "../Loader/Loader";
 import { convertToTitleCase, toProperCase } from "../../util/util";
+import NewCard from "./NewCard/NewCard";
 
 const Players = () => {
   const [isVerified, setIsVerified] = useState(false);
@@ -116,7 +119,7 @@ const Players = () => {
   const handleFetch = useCallback(async () => {
     setIsLoading(true);
     try {
-      const data = await getAllPlayers();
+      const data = allPlayerDataResponse;
       const sortedData = data.data.sort((a, b) => b?.playerId - a?.playerId);
       setRegisteredPlayers(sortedData);
       setPlayers(sortedData);
@@ -214,14 +217,14 @@ const Players = () => {
           </Col>
         </Row>
       </Container>
-      <div className="player-grid">
+      <div className="player-grid1">
         {isLoading && <Loader />}
         {!isLoading && filteredPlayers.length !== 0 ? (
           <>
             {filteredPlayers.map((player) => (
-              // <div className="d-flex">
-              <PlayerCard key={player._id} player={player} />
-              // </div>
+              <div className="d-flex">
+                <PlayerCard key={player._id} player={player} />
+              </div>
             ))}
           </>
         ) : (

@@ -22,10 +22,17 @@ export const useFeatureFlags = () => {
 };
 
 export const convertToTitleCase = (str) => {
-  if (str === undefined) return "";
-  return str
-    .replace(/([A-Z])/g, " $1")
-    .replace(/^./, (char) => char.toUpperCase());
+  if (str === undefined || str === "") return "";
+  return str.replace(
+    /\w\S*/g,
+    (word) => word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()
+  );
+};
+
+export const formatPlayerType = (text) => {
+  return text
+    .replace(/([a-z])([A-Z])/g, "$1 $2") // Add space before uppercase letters
+    .replace(/^./, (str) => str.toUpperCase()); // Capitalize first letter
 };
 
 export function toProperCase(input) {

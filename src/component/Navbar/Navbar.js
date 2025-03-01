@@ -90,6 +90,9 @@ const MyNavbar = () => {
                   >
                     Players Verification
                   </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => handleNavigate("/auction")}>
+                    Auction Tab
+                  </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link onClick={logout}>Logout</Nav.Link>
               </>

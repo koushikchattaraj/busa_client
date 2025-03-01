@@ -1,0 +1,214 @@
+
+.auction-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #654ea3, #eaafc8);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    width: 98vw;
+    height: 88vh;
+    margin: 0;
+  }
+  
+  .auction-card-container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+  }
+  
+  .player-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .player-image-border {
+    border-radius: 50%;
+    padding: 10px;
+    background: linear-gradient(45deg, #ce2c2c, #d529b9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .player-image {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    object-fit: contain;
+  }
+  
+  .player-info {
+    flex: 2;
+    text-align: center;
+    padding-left: 1%;
+  }
+  .player-id {
+    top: 25px;
+    font-size: 3rem; /* Bigger font for emphasis */
+    font-weight: 800;
+    font-style: italic;
+    color: #ffffff; /* Gold color */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-family: "Poppins", sans-serif;
+    border-radius: 5px;
+  }
+  
+  
+  .player-name {
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-wrap-mode: nowrap;
+  }
+  
+  .player-nickname {
+    font-size: 3rem;
+    font-style: italic;
+    /* font-weight: bold; */
+  }
+  
+  .player-district,
+  .player-type,
+  .player-stats {
+    font-size: 2.5rem;
+    margin: 10px 0;
+    /* font-weight: bold; */
+  }
+  
+/* Responsive Styles */
+
+@media (min-width: 2000px) {
+  .auction-card-container {
+    display: flex;
+    width: 90%;
+    max-width: 2900px;
+  }
+  .auction-card {
+    width: 99vw;
+    height: 95vh;
+    padding: 40px;
+  }
+  
+  .player-image {
+    width: 1100px;
+    height: 1100px;
+  }
+  
+  .player-id {
+    font-size: 10rem;
+    top: 30px;
+    /* right: 40px; */
+  }
+  
+  .player-name {
+    font-size: 10rem;
+  }
+  
+  .player-nickname {
+    font-size: 5rem;
+  }
+  
+  .player-district,
+  .player-type,
+  .player-stats {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .player-name {
+    font-size: 3rem;
+  }
+  .player-id {
+    font-size: 3rem;
+    top: 15px;
+    /* right: 10px; */
+  }
+  .player-image {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  .auction-card {
+    height: auto;
+    padding: 15px;
+  }
+  .auction-card-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .player-image-container {
+    margin-bottom: 20px;
+  }
+  .player-image {
+    width: 350px;
+    height: 350px;
+  }
+  .player-id {
+    font-size: 2.5rem;
+  }
+  .player-name {
+    font-size: 2.5rem;
+  }
+  .player-nickname {
+    font-size: 1.8rem;
+  }
+  .player-district,
+  .player-type,
+  .player-stats {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .player-image {
+    width: 280px;
+    height: 280px;
+  }
+  .player-id {
+    font-size: 2rem;
+    top: 10px;
+    right: 15px;
+  }
+  .player-name {
+    font-size: 2rem;
+  }
+  .player-nickname {
+    font-size: 1.5rem;
+  }
+  .player-district,
+  .player-type,
+  .player-stats {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .player-id {
+    font-size: 1.8rem;
+    top: 5px;
+    right: 10px;
+  }
+  .player-image {
+    width: 200px;
+    height: 200px;
+  }
+  .player-name {
+    font-size: 1.8rem;
+  }
+  .player-nickname {
+    font-size: 1.3rem;
+  }
+  .player-district,
+  .player-type,
+  .player-stats {
+    font-size: 0.9rem;
+  }
+}

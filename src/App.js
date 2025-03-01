@@ -19,6 +19,8 @@ import { About } from "./component/About/About";
 import { Contact } from "./component/Contact/Contact";
 import { PlayerVerification } from "./component/PlayerVerification/PlayerVerification";
 import { ViewPlayers } from "./component/ViewPlayers/ViewPlayers";
+import { AuctionTab } from "./component/AuctionTab/AuctionTab";
+
 
 function App() {
 
@@ -84,6 +86,10 @@ function App() {
                   }
                 />
               }
+            />
+            <Route
+              path="/auction"
+              element={<ProtectedRoute element={<AuctionTab />} />}
             />
             <Route path="/teams" element={<Teams />} />
             <Route path="/about" element={<About />} />
