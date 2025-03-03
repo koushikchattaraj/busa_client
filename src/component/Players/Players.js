@@ -56,7 +56,6 @@ const Players = () => {
       { key: "bowlingPace", header: "Bowling Pace" },
       { key: "wicketKeeper", header: "Wicket Keeper" },
       { key: "paymentVerified", header: "Player Verified" },
-      { key: "tShirtSize", header: "T Shirt Size" },
     ];
 
     const transformedPlayers = players.map((player) => {
@@ -218,7 +217,7 @@ const Players = () => {
           </Col>
         </Row>
       </Container>
-      <div className="player-grid">
+      <div className="player-grid1">
         {isLoading && <Loader />}
         {!isLoading && filteredPlayers.length !== 0 ? (
           <>
