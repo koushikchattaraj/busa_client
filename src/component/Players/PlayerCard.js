@@ -35,7 +35,7 @@ const PlayerCard = ({ player }) => {
 
   const calculateAge = (dob) => {
     const birthDate = new Date(dob);
-    const today = new Date('2025-01-01');
+    const today = new Date();
     let age = today.getFullYear() - birthDate.getFullYear();
     const monthDiff = today.getMonth() - birthDate.getMonth();
     if (
@@ -50,7 +50,7 @@ const PlayerCard = ({ player }) => {
   const age = calculateAge(data.dob);
 
   return (
-    <div style={{ cursor: "pointer" }}>
+    <div onClick={downloadImage} style={{ cursor: "pointer" }}>
       <div className="player-card" ref={cardRef}>
         {age < 21 && <div className="under-21-label-circle">Under 21</div>}
         <div className="playerId">{data.playerId}</div>

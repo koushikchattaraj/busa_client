@@ -21,7 +21,9 @@ import { PlayerVerification } from "./component/PlayerVerification/PlayerVerific
 import { ViewPlayers } from "./component/ViewPlayers/ViewPlayers";
 import { AuctionTab } from "./component/AuctionTab/AuctionTab";
 
+
 function App() {
+
   const featureFlags = useFeatureFlags();
   const useIsFeatureEnabled = (featureKey) => {
     if (featureFlags && featureFlags[featureKey.toLowerCase()]) {
