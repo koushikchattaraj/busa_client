@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
-import lalmati from "../../assets/images/lalmati.png";
+import mpcup from "../../assets/images/mpcup.png";
 
 const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
       <div className="PlayerDetailsBody">
         <div className="text-center">
           <img
-            src={lalmati}
+            src={mpcup}
             alt="Profile Preview"
             style={{
               width: "300px",
@@ -28,13 +28,11 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
             }}
           />
         </div>
-        <h1 className="text-center color-white">
-          Welcome to Lal Matir Cricket Leauge
-        </h1>
+        <h1 className="text-center color-white">Bankura MP Cup 2025</h1>
         {!isPlayerRegistrationFeatureEnabled && (
           <>
             <h3 className="text-center color-white">
-              Auction Date : 2nd March 2025 || Chhatna Auditorium
+              Auction Date : 19th April 2025
             </h3>
             <div className="buttonbox">
               <button
@@ -61,7 +59,7 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
               </button>
             </div>
             <h3 className="text-center color-white mt-2">
-              Registration window will close by 25th February 2025 7:00 PM
+              Registration window will close by 17th April 2025 7:00 PM
             </h3>
             test
           </>

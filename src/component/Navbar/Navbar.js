@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import isAuthenticated from "../../auth";
 import { useNavigate } from "react-router-dom";
-import busalogo from "../../assets/images/busalogo.png";
+import dsalogo from "../../assets/images/dsalogo.png";
 
 const MyNavbar = () => {
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ const MyNavbar = () => {
           style={{ cursor: "pointer" }}
         >
           <img
-            src={busalogo}
+            src={dsalogo}
             alt="BUSA Logo"
             className="img-fluid"
             style={{
@@ -61,7 +61,7 @@ const MyNavbar = () => {
             }}
           />
           <span className="fw-bold text-truncate" style={{ fontSize: "12px" }}>
-            Bankura United Sports Association
+            Bankura District Sports Association
           </span>
         </Navbar.Brand>
 
@@ -74,7 +74,9 @@ const MyNavbar = () => {
         {/* Navbar Collapse */}
         <Navbar.Collapse id="navbar-nav" className="justify-content-end">
           <Nav className="ms-auto align-items-center gap-3">
-            <Nav.Link onClick={() => handleNavigate("/teams")}>Teams</Nav.Link>
+            <Nav.Link onClick={() => handleNavigate("/franchise")}>
+              Franchise
+            </Nav.Link>
             <Nav.Link onClick={() => handleNavigate("/about")}>About</Nav.Link>
             <Nav.Link onClick={() => handleNavigate("/contact")}>
               Contact

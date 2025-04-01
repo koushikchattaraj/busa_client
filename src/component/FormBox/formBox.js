@@ -3,7 +3,7 @@ import "./formBox.css";
 import { createPlayer } from "../../services/services";
 import UnderConstruction from "../UnderConstruction/UnderConstruction";
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
-import lalmati from "../../assets/images/lalmati.png";
+import mpcup from "../../assets/images/mpcup.png";
 import TandCModal from "../TandCModal/TandCModal";
 import Loader from "../Loader/Loader";
 import PaymentProcessModal from "../PaymentProcessModal/PaymentProcessModal";
@@ -78,7 +78,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
     mobile: "",
     aadharId: "",
     address: "",
-    district: "",
+    district: "Bankura",
     pinCode: "",
     playerType: "",
     battingArm: "",
@@ -89,7 +89,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
     preferredJerseyName: "",
     state: "WB",
     year: "2025",
-    league: "lalmatir_cricket_league",
+    league: "mp_cup_bankura",
     season: "s1",
     photo: null,
     uploadPaymentProof: null,
@@ -149,7 +149,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
         preferredJerseyNumber: "",
         preferredJerseyName: "",
         year: "2025",
-        league: "lalmatir_cricket_league",
+        league: "mp_cup_bankura",
         season: "1",
         photo: null,
         uploadPaymentProof: null,
@@ -191,8 +191,8 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
               >
                 <div className="text-center mb-4">
                   <img
-                    src={lalmati}
-                    alt="Lalmati Logo"
+                    src={mpcup}
+                    alt="mpcup Logo"
                     style={{
                       width: "75px",
                       height: "75px",
@@ -235,7 +235,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     <Form.Group controlId="playerNickName">
                       <Form.Control
                         type="text"
-                        placeholder="Nick Name"
+                        placeholder="Name on Jersey"
                         name="playerNickName"
                         value={formData.playerNickName}
                         onChange={handleChange}
@@ -258,12 +258,12 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                     </Form.Group>
                   </Col>
                   <Col md={6} xs={12} className="mb-3 mb-md-0">
-                    <Form.Group controlId="weight">
+                    <Form.Group controlId="preferredJerseyNumber">
                       <Form.Control
                         type="text"
-                        placeholder="Weight (kg)"
-                        name="weight"
-                        value={formData.weight}
+                        placeholder="Jersey Number"
+                        name="preferredJerseyNumber"
+                        value={formData.preferredJerseyNumber}
                         onChange={handleChange}
                         required
                       />
@@ -340,7 +340,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                 </Form.Group>
 
                 <Row className="mb-3">
-                  <Col md={6} xs={12} className="mb-3 mb-md-0">
+                  {/* <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="district">
                       <Form.Control
                         type="text"
@@ -351,8 +351,8 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                         required
                       />
                     </Form.Group>
-                  </Col>
-                  <Col md={6} xs={12} className="mb-3 mb-md-0">
+                  </Col> */}
+                  <Col md={12} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="pinCode">
                       <Form.Control
                         type="number"
@@ -382,10 +382,10 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                         <option value="batsman">Batsman</option>
                         <option value="bowler">Bowler</option>
                         <option value="battingAllRounder">
-                          Batting AllRounder
+                          Batting All Rounder
                         </option>
                         <option value="bowlingAllRounder">
-                          Bowling AllRounder
+                          Bowling All Rounder
                         </option>
                       </Form.Control>
                     </Form.Group>
@@ -437,6 +437,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                         <option value="">Bowling Arm</option>
                         <option value="left">Left</option>
                         <option value="right">Right</option>
+                        <option value="na">NA</option>
                       </Form.Control>
                     </Form.Group>
                   </Col>
@@ -484,7 +485,9 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
                 <Row className="mb-3">
                   <Col md={12} xs={12}>
                     <Form.Group controlId="uploadPaymentProof">
-                      <Form.Label>Upload Payment Proof</Form.Label>
+                      <Form.Label>
+                        Upload Detailed Transaction Proof with UTR Number
+                      </Form.Label>
                       <Form.Control
                         type="file"
                         accept="image/*,application/pdf"
