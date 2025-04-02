@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import FormBox from "./component/FormBox/formBox";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   useNavigate,
