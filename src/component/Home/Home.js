@@ -31,12 +31,14 @@ const Home = ({
             }}
           />
         </div>
-        <h1 className="text-center color-white">Bankura MP Cup 2025</h1>
-        <span className="text-center color-white">
+        <h1 className="text-center color-white mx-3 my-0">
+          Bankura MP Cup 2025
+        </h1>
+        <span className="text-center color-white mx-3 my-0">
           Management & Cooperation By: District Sports Association Bankura
         </span>
-        <span className="text-center color-white">
-          Player Registration Period : 4th April 2025 - 15th April 2025
+        <span className="text-center color-white mx-3 my-0">
+          Player Registration Period : 5th April 2025 - 15th April 2025
         </span>
         {/* <span className="text-center color-white">
           Organized by: District Sports Association Bankura
@@ -46,7 +48,7 @@ const Home = ({
         </span> */}
         {isViewPlayersFeatureEnabled && (
           <>
-            <h3 className="text-center color-white">
+            <h3 className="text-center color-white mx-3 my-0">
               Auction Date : 19th April 2025
             </h3>
             <div className="buttonbox">
@@ -73,7 +75,7 @@ const Home = ({
                 Player Registration
               </button>
             </div>
-            <h3 className="text-center color-white mt-2">
+            <h3 className="text-center color-white mt-2 mx-3 my-0">
               Registration window will close by 17th April 2025 7:00 PM
             </h3>
             test

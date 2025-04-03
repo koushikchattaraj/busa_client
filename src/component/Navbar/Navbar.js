@@ -60,7 +60,19 @@ const MyNavbar = () => {
               borderRadius: "50%",
             }}
           />
-          <span className="fw-bold text-truncate" style={{ fontSize: "12px" }}>
+          <span
+            className="fw-bold text-truncate"
+            style={{
+              fontSize: "min(4vw, 13px)", // Scales with screen size but maxes at 16px
+              transform: "scaleY(1.5)", // Stretches height
+              display: "inline-block",
+              fontWeight: "bold",
+              maxWidth: "100%", // Ensures it doesn't overflow
+              whiteSpace: "nowrap", // Prevents wrapping
+              overflow: "hidden", // Ensures truncation
+              textOverflow: "ellipsis", // Shows "..." if too long
+            }}
+          >
             District Sports Association Bankura
           </span>
         </Navbar.Brand>
@@ -74,33 +86,36 @@ const MyNavbar = () => {
         {/* Navbar Collapse */}
         <Navbar.Collapse id="navbar-nav" className="justify-content-end">
           <Nav className="ms-auto align-items-center gap-3">
-            <Nav.Link onClick={() => handleNavigate("/franchise")}>
-              Franchise
+            <Nav.Link onClick={() => handleNavigate("/tournaments")}>
+              TOURNAMENTS
             </Nav.Link>
-            <Nav.Link onClick={() => handleNavigate("/about")}>About</Nav.Link>
+            {/* <Nav.Link onClick={() => handleNavigate("/franchise")}>
+              FRANCHISE
+            </Nav.Link> */}
+            <Nav.Link onClick={() => handleNavigate("/about")}>ABOUT</Nav.Link>
             <Nav.Link onClick={() => handleNavigate("/contact")}>
-              Contact
+              CONTACT
             </Nav.Link>
             {isAuthenticatedUser ? (
               <>
                 <NavDropdown title="Player Deatils" id="basic-nav-dropdown">
                   <NavDropdown.Item onClick={() => handleNavigate("/players")}>
-                    Players
+                    PLAYERS
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     onClick={() => handleNavigate("/players_verification")}
                   >
-                    Players Verification
+                    PLAYERS VERIFICATION
                   </NavDropdown.Item>
                   <NavDropdown.Item onClick={() => handleNavigate("/auction")}>
-                    Auction Tab
+                    AUCTION TAB
                   </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link onClick={logout}>Logout</Nav.Link>
               </>
             ) : (
               <Nav.Link onClick={() => handleNavigate("/login")}>
-                Login
+                LOGIN
               </Nav.Link>
             )}
           </Nav>

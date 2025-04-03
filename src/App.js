@@ -21,6 +21,7 @@ import { PlayerVerification } from "./component/PlayerVerification/PlayerVerific
 import { ViewPlayers } from "./component/ViewPlayers/ViewPlayers";
 import { AuctionTab } from "./component/AuctionTab/AuctionTab";
 import { Footer } from "./component/Footer/Footer";
+import { Tournaments } from "./component/Tournaments/Tournaments";
 
 function App() {
   const featureFlags = useFeatureFlags();
@@ -93,6 +94,7 @@ function App() {
               element={<ProtectedRoute element={<AuctionTab />} />}
             />
             <Route path="/franchise" element={<Teams />} />
+            <Route path="/tournaments" element={<Tournaments />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/view_players" element={<ViewPlayers />} />
