@@ -20,6 +20,7 @@ import { Contact } from "./component/Contact/Contact";
 import { PlayerVerification } from "./component/PlayerVerification/PlayerVerification";
 import { ViewPlayers } from "./component/ViewPlayers/ViewPlayers";
 import { AuctionTab } from "./component/AuctionTab/AuctionTab";
+import { Footer } from "./component/Footer/Footer";
 
 function App() {
   const featureFlags = useFeatureFlags();
@@ -36,6 +37,7 @@ function App() {
   const isPlayerVerificationFeatureEnabled = useIsFeatureEnabled(
     "PLAYER_VERIFICATION"
   );
+  const isViewPlayersFeatureEnabled = useIsFeatureEnabled("VIEW_PLAYERS");
   return (
     <div className="App">
       <Router>
@@ -49,6 +51,7 @@ function App() {
                   isPlayerRegistrationFeatureEnabled={
                     isPlayerRegistrationFeatureEnabled
                   }
+                  isViewPlayersFeatureEnabled={isViewPlayersFeatureEnabled}
                 />
               }
             />
@@ -96,6 +99,7 @@ function App() {
           </Routes>
         </div>
       </Router>
+      <Footer />
     </div>
   );
 }

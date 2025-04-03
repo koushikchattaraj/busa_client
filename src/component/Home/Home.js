@@ -3,7 +3,10 @@ import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import mpcup from "../../assets/images/mpcup.png";
 
-const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
+const Home = ({
+  isPlayerRegistrationFeatureEnabled,
+  isViewPlayersFeatureEnabled,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -29,7 +32,16 @@ const Home = ({ isPlayerRegistrationFeatureEnabled }) => {
           />
         </div>
         <h1 className="text-center color-white">Bankura MP Cup 2025</h1>
-        {!isPlayerRegistrationFeatureEnabled && (
+        <h4 className="text-center color-white">
+          Starting From : 26th April 2025
+        </h4>
+        {/* <span className="text-center color-white">
+          Organized by: Bankura District Sports Association
+        </span>
+        <span className="text-center color-white mb-3">
+          In Association with: Bankura United Sports Association
+        </span> */}
+        {isViewPlayersFeatureEnabled && (
           <>
             <h3 className="text-center color-white">
               Auction Date : 19th April 2025

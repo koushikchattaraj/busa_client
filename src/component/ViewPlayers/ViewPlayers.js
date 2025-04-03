@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Loader from "../Loader/Loader";
-// import { getAllPlayers } from "../../services/services";
+import { getAllPlayers } from "../../services/services";
 import PlayerCard from "../Players/PlayerCard";
-import { allPlayerDataResponse } from "../../assets/data/allPlayerDataResponse";
+// import { allPlayerDataResponse } from "../../assets/data/allPlayerDataResponse";
 import { Container, Row, Col, Form } from "react-bootstrap";
 
 export const ViewPlayers = () => {
@@ -13,8 +13,8 @@ export const ViewPlayers = () => {
   const handleFetch = useCallback(async () => {
     setIsLoading(true);
     try {
-      // const data = await getAllPlayers();
-      const data = allPlayerDataResponse;
+      const data = await getAllPlayers();
+      // const data = allPlayerDataResponse;
       const sortedData = data.data.sort((a, b) => a?.playerId - b?.playerId);
       setPlayers(sortedData);
       setIsLoading(false);
