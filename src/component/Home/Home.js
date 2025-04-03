@@ -32,11 +32,14 @@ const Home = ({
           />
         </div>
         <h1 className="text-center color-white">Bankura MP Cup 2025</h1>
-        <h4 className="text-center color-white">
-          Starting From : 26th April 2025
-        </h4>
+        <span className="text-center color-white">
+          Management & Cooperation By: District Sports Association Bankura
+        </span>
+        <span className="text-center color-white">
+          Player Registration Period : 4th April 2025 - 15th April 2025
+        </span>
         {/* <span className="text-center color-white">
-          Organized by: Bankura District Sports Association
+          Organized by: District Sports Association Bankura
         </span>
         <span className="text-center color-white mb-3">
           In Association with: Bankura United Sports Association

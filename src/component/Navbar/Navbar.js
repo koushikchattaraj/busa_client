@@ -61,7 +61,7 @@ const MyNavbar = () => {
             }}
           />
           <span className="fw-bold text-truncate" style={{ fontSize: "12px" }}>
-            Bankura District Sports Association
+            District Sports Association Bankura
           </span>
         </Navbar.Brand>
 
