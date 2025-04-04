@@ -11,6 +11,14 @@ import {
 } from "react-bootstrap";
 import mpcup from "../../assets/images/mpcup.png";
 import mpcupdetails from "../../assets/images/mpcupdetails.jpeg";
+import bankuraBlasters from "../../assets/images/mpcupteamslogo/BANKUR_BLASTERS.png";
+import bankuraMunicipalityKings from "../../assets/images/mpcupteamslogo/BANKURA_MUNICIPALATY_KINGS.png";
+import chattnaCapitals from "../../assets/images/mpcupteamslogo/CHATTANA_CAPITALS.png";
+import raipurWarriors from "../../assets/images/mpcupteamslogo/RAIPUR_WARIORS.png";
+import taldangraTitans from "../../assets/images/mpcupteamslogo/TALDANGRA_TITANS.png";
+import saltoraSuperGiants from "../../assets/images/mpcupteamslogo/SALTORA_SUPERGIANTS.png";
+import ranibandhRangers from "../../assets/images/mpcupteamslogo/RANIBANDH_RENGERS.png";
+import raghunathpurRoyals from "../../assets/images/mpcupteamslogo/RAGHUNATHPUR_ROYALS.png";
 
 export const Tournaments = () => {
   const activeTournament = "mpcup2025";
@@ -22,14 +30,14 @@ export const Tournaments = () => {
       season: "Season 1",
       details: mpcupdetails,
       teams: [
-        { name: "Bankura Blasters", logo: mpcup },
-        { name: "Bankura Municipality Kings", logo: mpcup },
-        { name: "Chhatna Capitals", logo: mpcup },
-        { name: "Raipur Warriors", logo: mpcup },
-        { name: "Taldangra Titans", logo: mpcup },
-        { name: "Saltora SuperGiants", logo: mpcup },
-        { name: "Ranibandh Rangers", logo: mpcup },
-        { name: "Raghunathpur Royals", logo: mpcup },
+        { name: "Bankura Blasters", logo: bankuraBlasters },
+        { name: "Bankura Municipality Kings", logo: bankuraMunicipalityKings },
+        { name: "Chhatna Capitals", logo: chattnaCapitals },
+        { name: "Raipur Warriors", logo: raipurWarriors },
+        { name: "Taldangra Titans", logo: taldangraTitans },
+        { name: "Saltora SuperGiants", logo: saltoraSuperGiants },
+        { name: "Ranibandh Rangers", logo: ranibandhRangers },
+        { name: "Raghunathpur Royals", logo: raghunathpurRoyals },
       ],
     },
   ];
@@ -83,12 +91,12 @@ export const Tournaments = () => {
                                   "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)",
                               }}
                             >
-                              {/* <Image
+                              <Image
                                 src={team.logo}
                                 alt={team.name}
                                 className="me-2"
                                 style={{ width: "50px", height: "50px" }}
-                              /> */}
+                              />
                               <span className="text-center color-white">
                                 {team.name}
                               </span>

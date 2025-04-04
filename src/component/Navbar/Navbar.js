@@ -73,7 +73,7 @@ const MyNavbar = () => {
               textOverflow: "ellipsis", // Shows "..." if too long
             }}
           >
-            District Sports Association Bankura
+            Bankura District Sports Association
           </span>
         </Navbar.Brand>
 

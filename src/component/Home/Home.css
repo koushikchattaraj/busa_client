@@ -42,7 +42,7 @@
 } */
 
 .button-85 {
-  padding: 1.75rem;
+  padding: 1rem;
   border: none;
   outline: none;
   color: rgb(173, 166, 166);
@@ -54,7 +54,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 
 .button-85:before {

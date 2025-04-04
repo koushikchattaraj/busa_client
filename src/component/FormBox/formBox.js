@@ -18,7 +18,7 @@ const FormBox = ({ isPlayerRegistrationFeatureEnabled }) => {
   const [showErrorAlert, setShowErrorAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const whatsappLink = "https://chat.whatsapp.com/D6kDwzhyRH81pNkLDBKvbe";
+  const whatsappLink = "https://chat.whatsapp.com/Lnguu34ZMYdBoUIfoaXwDI";
 
   const handleJoinGroup = () => {
     window.open(whatsappLink, "_blank");
