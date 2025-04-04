@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./PlayerDetails.css";
-import koushikImg from "../../assets/images/koushik.jpeg";
+import dsalogo from "../../assets/images/dsalogo.png";
 import Loader from "../Loader/Loader";
 import { getPlayerById } from "../../services/services";
 import { useParams } from "react-router-dom";
@@ -42,8 +42,6 @@ export const PlayerDetails = () => {
     }
   }, [idFromParams]);
 
-
-
   return (
     <div className="PlayerDetailsBody">
       <div>
@@ -58,7 +56,7 @@ export const PlayerDetails = () => {
           <div className="PlayerDetailscontainerBox">
             <div className="PlayerDetailsleft-side">
               <img
-                src={koushikImg}
+                src={dsalogo}
                 alt="playerphoto"
                 className="PlayerDetailsphoto"
               />
