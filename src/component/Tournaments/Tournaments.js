@@ -95,7 +95,7 @@ export const Tournaments = () => {
                                 src={team.logo}
                                 alt={team.name}
                                 className="me-2"
-                                style={{ width: "50px", height: "50px" }}
+                                style={{ width: "100px", height: "100px" }}
                               />
                               <span className="text-center color-white">
                                 {team.name}
