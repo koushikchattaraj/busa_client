@@ -8,6 +8,20 @@ const PlayerCard = ({ player }) => {
   const data = player;
   const cardRef = useRef(null);
 
+  function formatPlayerRoles(input) {
+    return input
+      .split("/")
+      .map(
+        (role) =>
+          role
+            .replace(/([a-z])([A-Z])/g, "$1 $2") // insert space before capital letters
+            .replace(/([A-Z])/g, " $1") // add space if camel case like "AllRounder"
+            .trim()
+            .replace(/\b\w/g, (char) => char.toUpperCase()) // capitalize each word
+      )
+      .join(", ");
+  }
+
   const downloadImage = async () => {
     try {
       if (!cardRef.current) return;
@@ -52,8 +66,8 @@ const PlayerCard = ({ player }) => {
   return (
     <div onClick={downloadImage} style={{ cursor: "pointer" }}>
       <div className="player-card" ref={cardRef}>
-        {age < 21 && <div className="under-21-label-circle">Under 21</div>}
-        <div className="playerId">{data.playerId}</div>
+        {age < 19 && <div className="under-21-label-circle">Under 19</div>}
+        {/* <div className="playerId">{data.playerId}</div> */}
         <div className="card-image">
           <img
             src={data.photo}
@@ -79,7 +93,7 @@ const PlayerCard = ({ player }) => {
             </strong>
           </p>
           <h4 style={{ color: "white" }}>
-            <strong>{convertToTitleCase(data?.playerType)}</strong>
+            <strong>{formatPlayerRoles(data?.playerType)}</strong>
           </h4>
           {isAllRounder(data?.playerType) && (
             <div
