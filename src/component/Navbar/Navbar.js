@@ -120,7 +120,7 @@ const MyNavbar = () => {
             )}
           </Nav>
 
-          {isAuthenticatedUser && (
+          {/* {isAuthenticatedUser && (
             <Form className="d-flex ms-3">
               <FormControl
                 type="search"
@@ -148,7 +148,7 @@ const MyNavbar = () => {
                 Search
               </Button>
             </Form>
-          )}
+          )} */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

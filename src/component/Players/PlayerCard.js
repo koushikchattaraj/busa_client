@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./PlayerCard.css";
 import { toPng } from "html-to-image";
 import { convertToTitleCase, toProperCase } from "../../util/util";
+import { useNavigate } from "react-router-dom";
 
 const PlayerCard = ({ player }) => {
   const data = player;
@@ -33,6 +34,12 @@ const PlayerCard = ({ player }) => {
     } catch (err) {
       console.error("Error generating image:", err);
     }
+  };
+
+  const navigate = useNavigate();
+
+  const detailedPlayer = () => {
+    navigate(`/player_details/${1}`);
   };
 
   function isAllRounder(playerType) {

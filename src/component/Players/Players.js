@@ -8,7 +8,7 @@ import * as XLSX from "xlsx";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Loader from "../Loader/Loader";
 import { convertToTitleCase, toProperCase } from "../../util/util";
-import NewCard from "./NewCard/NewCard";
+// import NewCard from "./NewCard/NewCard";
 
 const Players = () => {
   const [isVerified, setIsVerified] = useState(false);
@@ -73,9 +73,9 @@ const Players = () => {
 
           // Check if the player's age is under 21
           const age = new Date().getFullYear() - dob.getFullYear();
-          if (age < 21) {
+          if (age < 19) {
             // Add " U21" in bold to the formatted date
-            formattedDob += " U21";
+            formattedDob += " U19";
           }
 
           transformedPlayer[column.header] = formattedDob;
@@ -208,13 +208,18 @@ const Players = () => {
         </Row>
         <Row className="justify-content-center">
           <Col xs={12} md={8}>
-            <Form.Control
-              type="text"
-              placeholder="Search by player Name / Id..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-bar"
-            />
+            <div className="d-flex flex-column">
+              <Form.Control
+                type="text"
+                placeholder="Search by player Name / Id..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-bar"
+              />
+              <span className="text-center">
+                Total Players : {players?.length}{" "}
+              </span>
+            </div>
           </Col>
         </Row>
       </Container>
