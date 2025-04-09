@@ -97,7 +97,6 @@ const Home = ({
             <span className="text-center color-white mt-2 mx-3 my-0">
               Registration window will close by 15th April 2025 7:00 PM
             </span>
-            test
           </>
         )}
       </div>

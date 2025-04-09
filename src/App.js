@@ -10,7 +10,7 @@ import Players from "./component/Players/Players";
 import Home from "./component/Home/Home";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./component/Login/Login";
-// import { PlayerDetails } from "./component/PlayerDetails/PlayerDetails";
+import { PlayerDetails } from "./component/PlayerDetails/PlayerDetails";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./component/Navbar/Navbar";
 import { useFeatureFlags } from "./util/util";
@@ -23,7 +23,7 @@ import { AuctionTab } from "./component/AuctionTab/AuctionTab";
 import { Footer } from "./component/Footer/Footer";
 import { Tournaments } from "./component/Tournaments/Tournaments";
 // import { UpdatePlayer } from "./component/Players/UpdatePlayer/UpdatePlayer";
-import { GetPlayer } from "./component/Players/UpdatePlayer/GetPlayer";
+// import { GetPlayer } from "./component/Players/UpdatePlayer/GetPlayer";
 
 function App() {
   const featureFlags = useFeatureFlags();
@@ -73,10 +73,10 @@ function App() {
               path="/players"
               element={<ProtectedRoute element={<Players />} />}
             />
-            <Route
+            {/* <Route
               path="/player_details/:id"
               element={<ProtectedRoute element={<GetPlayer />} />}
-            />
+            /> */}
             <Route
               path="/players_verification"
               element={
