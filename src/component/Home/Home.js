@@ -8,6 +8,7 @@ import poster from "../../assets/images/poster.png";
 const Home = ({
   isPlayerRegistrationFeatureEnabled,
   isViewPlayersFeatureEnabled,
+  isPlayerUpdateFeatureEnabled,
 }) => {
   const navigate = useNavigate();
 
@@ -96,6 +97,24 @@ const Home = ({
             </div>
             <span className="text-center color-white mt-2 mx-3 my-0">
               Registration window will close by 15th April 2025 7:00 PM
+            </span>
+          </>
+        )}
+
+        {isPlayerUpdateFeatureEnabled && (
+          <>
+            <div className="buttonbox">
+              <button
+                class="button-85"
+                onClick={() => {
+                  navigate("/player_details");
+                }}
+              >
+                Update Player
+              </button>
+            </div>
+            <span className="text-center color-white mt-2 mx-3 my-0">
+              Update window will close by 16th April 2025 7:00 PM
             </span>
           </>
         )}

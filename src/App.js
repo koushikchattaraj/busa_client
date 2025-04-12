@@ -23,7 +23,7 @@ import { AuctionTab } from "./component/AuctionTab/AuctionTab";
 import { Footer } from "./component/Footer/Footer";
 import { Tournaments } from "./component/Tournaments/Tournaments";
 // import { UpdatePlayer } from "./component/Players/UpdatePlayer/UpdatePlayer";
-// import { GetPlayer } from "./component/Players/UpdatePlayer/GetPlayer";
+import { GetPlayer } from "./component/Players/UpdatePlayer/GetPlayer";
 
 function App() {
   const featureFlags = useFeatureFlags();
@@ -41,6 +41,8 @@ function App() {
     "PLAYER_VERIFICATION"
   );
   const isViewPlayersFeatureEnabled = useIsFeatureEnabled("VIEW_PLAYERS");
+  // const isPlayerUpdateFeatureEnabled = useIsFeatureEnabled("PLAYER_UPDATE");
+  const isPlayerUpdateFeatureEnabled = true;
   return (
     <div className="App">
       <Router>
@@ -55,6 +57,7 @@ function App() {
                     isPlayerRegistrationFeatureEnabled
                   }
                   isViewPlayersFeatureEnabled={isViewPlayersFeatureEnabled}
+                  isPlayerUpdateFeatureEnabled={isPlayerUpdateFeatureEnabled}
                 />
               }
             />
@@ -73,10 +76,7 @@ function App() {
               path="/players"
               element={<ProtectedRoute element={<Players />} />}
             />
-            {/* <Route
-              path="/player_details/:id"
-              element={<ProtectedRoute element={<GetPlayer />} />}
-            /> */}
+            <Route path="/player_details/" element={<GetPlayer />} />
             <Route
               path="/players_verification"
               element={

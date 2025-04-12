@@ -40,6 +40,26 @@ export const getPlayerById = (id) => {
   return apiClient.get(`/api/players/${id}`);
 };
 
+export const updatePlayerById = (id, token, userData) => {
+  console.log("userData : ", userData);
+  const formData = new FormData();
+  for (const key in userData) {
+    if (userData[key]) {
+      if (key === "photo") {
+        formData.append(key, userData[key]);
+      } else {
+        formData.append(key, userData[key]);
+      }
+    }
+  }
+  return apiClient.put(`/api/players/${id}`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      token: token,
+    },
+  });
+};
+
 export const verifiedPayment = (userData) => {
   return apiClient.post(`/api/players/verify-payment-proof`, userData);
 };

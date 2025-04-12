@@ -1,9 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
-import { getPlayerById } from "../../../services/services";
+import { updatePlayerById } from "../../../services/services";
+import Loader from "../../Loader/Loader";
 
 export const UpdatePlayer = ({ player }) => {
+  const token = localStorage.getItem("authPlayerToken");
+  const [isLoading, setIsLoading] = useState(false);
+  const [apiStatus, setApiStatus] = useState("");
   const [formData, setFormData] = useState({
     playerName: player?.playerName,
     playerNickName: player?.playerNickName,
@@ -26,6 +29,7 @@ export const UpdatePlayer = ({ player }) => {
     league: "mp_cup_bankura",
     season: "s1",
     photo: player?.photo,
+    lowerSize: player?.lowerSize,
   });
 
   const [photoPreview, setPhotoPreview] = useState(player?.photo);
@@ -45,56 +49,116 @@ export const UpdatePlayer = ({ player }) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleSubmit = async (e) => {
+    setIsLoading(true);
+    e.preventDefault();
+    try {
+      const res = await updatePlayerById(player.playerId, token, formData);
+      console.log(res);
+      if (res.status === 200) {
+        setIsLoading(false);
+        setApiStatus("success");
+      }
+    } catch (error) {
+      console.log("error", error);
+      setIsLoading(false);
+      setApiStatus("error");
+    }
+  };
+
   return (
     <Container className="form-container">
-      <Form
-        // onSubmit={handleSubmit}
-        className="registration-form"
-        enctype="multipart/form-data"
-      >
-        <h2 className="text-center mb-4">Player Update Form</h2>
-        {photoPreview && (
-          <div className="text-center mb-4">
-            <img
-              src={photoPreview}
-              alt="Profile Preview"
-              style={{
-                width: "200px",
-                height: "200px",
-                objectFit: "cover",
-                borderRadius: "10%",
-              }}
-            />
+      {isLoading && <Loader />}
+      {apiStatus === "success" && (
+        <div style={{ height: "73vh" }}>
+          <div className="alert alert-success text-center">
+            Player Updated Successfully
           </div>
-        )}
-        {/* Personal Details Section */}
-        <h3>Personal Details</h3>
-        <Row className="mb-3">
-          <Col md={6} xs={12} className="mb-3 mb-md-0">
-            <Form.Group controlId="playerName">
-              <Form.Control
-                type="text"
-                placeholder="Player Name"
-                name="playerName"
-                value={formData.playerName}
-                onChange={handleChange}
-                required
+        </div>
+      )}
+      {apiStatus === "error" && (
+        <div style={{ height: "73vh" }}>
+          <div className="alert alert-danger text-center">
+            Error Updating Player
+          </div>
+        </div>
+      )}
+      {apiStatus === "" && !isLoading && (
+        <Form
+          onSubmit={handleSubmit}
+          className="registration-form"
+          enctype="multipart/form-data"
+        >
+          <h2 className="text-center mb-4">Player Update Form</h2>
+          {photoPreview && (
+            <div className="text-center mb-4">
+              <img
+                src={photoPreview}
+                alt="Profile Preview"
+                style={{
+                  width: "200px",
+                  height: "200px",
+                  objectFit: "cover",
+                  borderRadius: "10%",
+                }}
               />
-            </Form.Group>
-          </Col>
-          <Col md={6} xs={12} className="mb-3 mb-md-0">
-            <Form.Group controlId="playerNickName">
-              <Form.Control
-                type="text"
-                placeholder="Name on Jersey"
-                name="playerNickName"
-                value={formData.playerNickName}
-                onChange={handleChange}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-{/* 
+            </div>
+          )}
+          {/* Personal Details Section */}
+          <h3>Personal Details</h3>
+          <Row className="mb-3">
+            <Col md={6} xs={12} className="mb-3 mb-md-0">
+              <Form.Group controlId="playerName">
+                <Form.Label>Player Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Player Name"
+                  name="playerName"
+                  value={formData.playerName}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            </Col>
+            <Col md={6} xs={12} className="mb-3 mb-md-0">
+              <Form.Group controlId="playerNickName">
+                <Form.Label>Player Nick Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Name on Jersey"
+                  name="playerNickName"
+                  value={formData.playerNickName}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row className="mb-3">
+            <Col md={12} xs={12} className="mb-3 mb-md-0">
+              <Form.Group controlId="lower">
+                <Form.Label>Lower Size</Form.Label>
+                <Form.Group controlId="lowerSize">
+                  <Form.Control
+                    as="select"
+                    name="lowerSize"
+                    value={formData.lowerSize}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Lower Size</option>
+                    <option value="s28">S - 28</option>
+                    <option value="m30">M - 30</option>
+                    <option value="l32">L - 32</option>
+                    <option value="xl34">XL - 34</option>
+                    <option value="xxl36">XXL - 36</option>
+                    <option value="3xl38">3XL - 38</option>
+                    <option value="4xl40">4XL - 40</option>
+                    <option value="5xl42">5XL - 42</option>
+                  </Form.Control>
+                </Form.Group>
+              </Form.Group>
+            </Col>
+          </Row>
+          {/* 
         <Row className="mb-3">
           <Col md={6} xs={12} className="mb-3 mb-md-0">
             <Form.Group controlId="height">
@@ -122,8 +186,8 @@ export const UpdatePlayer = ({ player }) => {
           </Col>
         </Row> */}
 
-        <Row className="mb-3">
-          {/* <Col md={6} xs={12} className="mb-3 mb-md-0">
+          <Row className="mb-3">
+            {/* <Col md={6} xs={12} className="mb-3 mb-md-0">
             <Form.Group controlId="dob">
               <Form.Label>Date of Birth</Form.Label>
               <Form.Control
@@ -135,63 +199,63 @@ export const UpdatePlayer = ({ player }) => {
               />
             </Form.Group>
           </Col> */}
-          <Col md={12} xs={12} className="mb-3 mb-md-0">
-            <Form.Group controlId="photo">
-              <Form.Label>Profile Photo</Form.Label>
-              <Form.Control
-                type="file"
-                accept="image/*"
-                onChange={handlePhotoFileChange}
-                required
-              />
-            </Form.Group>
-          </Col>
-        </Row>
+            <Col md={12} xs={12} className="mb-3 mb-md-0">
+              <Form.Group controlId="photo">
+                <Form.Label>Profile Photo</Form.Label>
+                <Form.Control
+                  type="file"
+                  accept="image/*"
+                  onChange={handlePhotoFileChange}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
 
-        {/* Contact Details Section */}
-        <h3>Contact Details</h3>
-        <Row className="mb-3">
-          <Col md={6} xs={12} className="mb-3 mb-md-0">
-            <Form.Group controlId="mobile">
-              <Form.Control
-                type="tel"
-                placeholder="Mobile Number"
-                name="mobile"
-                value={formData.mobile}
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
-          </Col>
-          <Col md={6} xs={12} className="mb-3 mb-md-0">
-            <Form.Group controlId="aadharId">
-              <Form.Control
-                type="text"
-                placeholder="Aadhar Number"
-                name="aadharId"
-                value={formData.aadharId}
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
-          </Col>
-        </Row>
+          {/* Contact Details Section */}
+          <h3>Contact Details</h3>
+          <Row className="mb-3">
+            <Col md={6} xs={12} className="mb-3 mb-md-0">
+              <Form.Group controlId="mobile">
+                <Form.Label>Mobile Number</Form.Label>
+                <Form.Control
+                  type="tel"
+                  placeholder="Mobile Number"
+                  name="mobile"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+            </Col>
+            <Col md={6} xs={12} className="mb-3 mb-md-0">
+              <Form.Group controlId="aadharId">
+                <Form.Label>Aadhar Number</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Aadhar Number"
+                  name="aadharId"
+                  value={formData.aadharId}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+            </Col>
+          </Row>
 
-        <Form.Group controlId="address" className="mb-3">
-          <Form.Label>Address</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            placeholder="Address"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+          <Form.Group controlId="address" className="mb-3">
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              placeholder="Address"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+            />
+          </Form.Group>
 
-        <Row className="mb-3">
-          {/* <Col md={6} xs={12} className="mb-3 mb-md-0">
+          <Row className="mb-3">
+            {/* <Col md={6} xs={12} className="mb-3 mb-md-0">
                     <Form.Group controlId="district">
                       <Form.Control
                         type="text"
@@ -203,22 +267,22 @@ export const UpdatePlayer = ({ player }) => {
                       />
                     </Form.Group>
                   </Col> */}
-          <Col md={12} xs={12} className="mb-3 mb-md-0">
-            <Form.Group controlId="pinCode">
-              <Form.Control
-                type="number"
-                placeholder="Pin Code"
-                name="pinCode"
-                value={formData.pinCode}
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
-          </Col>
-        </Row>
+            <Col md={12} xs={12} className="mb-3 mb-md-0">
+              <Form.Group controlId="pinCode">
+                <Form.Control
+                  type="number"
+                  placeholder="Pin Code"
+                  name="pinCode"
+                  value={formData.pinCode}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+            </Col>
+          </Row>
 
-        {/* About Your Game Section */}
-        {/* <h3>About Player</h3>
+          {/* About Your Game Section */}
+          {/* <h3>About Player</h3>
         <Row className="mb-3">
           <Col md={6} xs={12} className="mb-3 mb-md-0">
             <Form.Group controlId="playerType">
@@ -328,10 +392,11 @@ export const UpdatePlayer = ({ player }) => {
             </Form.Group>
           </Col>
         </Row> */}
-        <Button type="submit" className="submit-button">
-          Submit
-        </Button>
-      </Form>
+          <Button type="submit" className="submit-button">
+            Submit
+          </Button>
+        </Form>
+      )}
     </Container>
   );
 };
