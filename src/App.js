@@ -41,8 +41,7 @@ function App() {
     "PLAYER_VERIFICATION"
   );
   const isViewPlayersFeatureEnabled = useIsFeatureEnabled("VIEW_PLAYERS");
-  // const isPlayerUpdateFeatureEnabled = useIsFeatureEnabled("PLAYER_UPDATE");
-  const isPlayerUpdateFeatureEnabled = true;
+  const isPlayerUpdateFeatureEnabled = useIsFeatureEnabled("PLAYER_UPDATE");
   return (
     <div className="App">
       <Router>
