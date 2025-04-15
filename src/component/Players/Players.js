@@ -57,6 +57,7 @@ const Players = () => {
       { key: "wicketKeeper", header: "Wicket Keeper" },
       { key: "paymentVerified", header: "Player Verified" },
       { key: "tShirtSize", header: "T Shirt Size" },
+      { key: "lowerSize", header: "Lower Size" },
     ];
 
     const transformedPlayers = players.map((player) => {

@@ -74,7 +74,7 @@ const PlayerCard = ({ player }) => {
     <div onClick={downloadImage} style={{ cursor: "pointer" }}>
       <div className="player-card" ref={cardRef}>
         {age < 19 && <div className="under-21-label-circle">Under 19</div>}
-        {/* <div className="playerId">{data.playerId}</div> */}
+        {data.wicketKeeper === "yes" && <div className="playerId">WK</div>}
         <div className="card-image">
           <img
             src={data.photo}
