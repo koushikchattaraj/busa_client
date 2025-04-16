@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AuctionCard from "../AuctionTab/AuctionCard/AuctionCard";
 
 const FullscreenModal = ({ show, handleClose, player }) => {
-  console.log(player,'---------------------')
   return (
     <Modal show={show} onHide={handleClose} fullscreen>
       <Modal.Header closeButton></Modal.Header>

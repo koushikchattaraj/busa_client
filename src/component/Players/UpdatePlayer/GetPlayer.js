@@ -28,7 +28,7 @@ export const GetPlayer = () => {
       }
 
       const playerData = allPlayerDataResponse?.data?.find(
-        (item) => item?.aadharId == aadhar
+        (item) => item?.aadharId.replace(/\s+/g, "") == aadhar
       );
       const normalizeAadhar = (aadhar) => aadhar.replace(/\s+/g, "");
       const extractDate = (dobObj) => {

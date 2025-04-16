@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AuctionCard from "./AuctionCard/AuctionCard";
 import { allPlayerDataResponse } from "../../assets/data/allPlayerDataResponse";
 import FullscreenModal from "../FullscreenModal/FullscreenModal";
+import mpcup from "../../assets/images/mpcup.png";
 
 export const AuctionTab = () => {
   const [searchText, setSearchText] = useState("");
@@ -45,7 +46,12 @@ export const AuctionTab = () => {
         </div>
         <div className="text-center mt-5">
           <div className="flex" style={{ justifyContent: "center" }}>
-            <h1>Welcome To Lal Matir Cricket League</h1>
+            <img
+              src={mpcup}
+              alt="MPCup"
+              style={{ width: "400px", height: "400px" }}
+            />
+            <h1>Welcome To Bankura MP Cup 2025</h1>
           </div>
         </div>
         <>
