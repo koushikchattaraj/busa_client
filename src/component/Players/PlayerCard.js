@@ -83,6 +83,7 @@ const PlayerCard = ({ player }) => {
           />
         </div>
         <div className="card-details" style={{ color: "white" }}>
+        <div className="playerI" style={{ color: "white" }}>Player Id - {data.playerId}</div>
           <h2 style={{ color: "white" }}>{toProperCase(data?.playerName)}</h2>
 
           {data?.playerNickName?.length > 0 ? (

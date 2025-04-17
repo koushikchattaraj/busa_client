@@ -122,7 +122,7 @@ const Players = () => {
     setIsLoading(true);
     try {
       const data = await getAllPlayers();
-      const sortedData = data.data.sort((a, b) => b?.playerId - a?.playerId);
+      const sortedData = data.data.sort((a, b) => a?.playerId - b?.playerId);
       setRegisteredPlayers(sortedData);
       setPlayers(sortedData);
       setIsLoading(false);
