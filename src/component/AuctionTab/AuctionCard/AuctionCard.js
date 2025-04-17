@@ -97,7 +97,7 @@ const AuctionCard = ({
                   {convertToTitleCase(battingArm)} - handed batsman
                 </p>
                 <p className="player-stats">
-                  {convertToTitleCase(bowlingArm)} - arm {""}
+                  {convertToTitleCase(bowlingArm)} - arm &nbsp;
                   {bowlingVarient(bowlingType)}
                 </p>
               </>
@@ -111,7 +111,7 @@ const AuctionCard = ({
 
             {!isAllRounder(playerType) && isBowler(playerType) && (
               <p className="player-stats">
-                {convertToTitleCase(bowlingArm)} - arm
+                {convertToTitleCase(bowlingArm)} - arm &nbsp;
                 {bowlingVarient(bowlingType)}
               </p>
             )}
