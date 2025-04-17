@@ -53,7 +53,7 @@ const AuctionCard = ({
       return "off - spiner";
     } else if (bowlingType === "pace") {
       return "fast bowler";
-    } else return "";
+    } else return "fast bowler";
   }
 
   return (

@@ -37,6 +37,12 @@ export const AuctionTab = () => {
 
   return (
     <div className="playerBody" style={{ height: "92vh" }}>
+      <div>
+        <div class="starsec"></div>
+        <div class="starthird"></div>
+        <div class="starfourth"></div>
+        <div class="starfifth"></div>
+      </div>
       <div className="container p-3">
         <div className="text-center mt-5">
           <div
