@@ -10,12 +10,14 @@
     width: 98vw;
     height: 88vh;
     margin: 0;
+    position: relative;
+
   }
   
   .auction-card-container {
     display: flex;
     width: 90%;
-    max-width: 1200px;
+    max-width: 90rem;
   }
   
   .player-image-container {
@@ -35,8 +37,8 @@
   }
   
   .player-image {
-    width: 500px;
-    height: 500px;
+    width: 25rem;
+    height: 25rem;
     border-radius: 50%;
     object-fit: contain;
   }
@@ -45,30 +47,95 @@
     flex: 2;
     text-align: center;
     padding-left: 1%;
+    align-content: center !important;
   }
   .player-id {
-    top: 25px;
-    font-size: 3rem; /* Bigger font for emphasis */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  
+    padding: 0.5rem 1rem;
+    min-width: 90px;
+    max-width: 160px;
+    height: auto;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  
+    font-size: clamp(1.2rem, 2vw, 2rem); /* Responsive font size */
     font-weight: 800;
     font-style: italic;
-    color: #ffffff; /* Gold color */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     font-family: "Poppins", sans-serif;
-    border-radius: 5px;
-  }
   
+    color: #ffffff;
+    background-color: #654ea3;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    white-space: nowrap;
+  }
+
+  .mpcuplogo{
+    top: 25px;
+    position: absolute;
+    left: 0;
+    width: 10.5rem;
+  }
+
+  .player-age{
+    top: 25px;
+    position: absolute;
+    left: 0;
+    width: 10.5rem;
+  }
   
   .player-name {
     font-size: 4rem;
     font-weight: bold;
     text-transform: uppercase;
-    text-wrap-mode: nowrap;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    border-right: 0.15em solid #ccc; /* Optional: blinking cursor */
+    animation: typewriter 3s steps(20) forwards, blink 0.75s step-end infinite;
+    text-shadow:
+      0 1px 0 rgb(212, 175, 175),
+      0 2px 0 rgb(194, 161, 161),
+      0 3px 0 rgb(176, 147, 147),
+      0 4px 0 rgb(158, 133, 133),
+      0 5px 0 rgb(140, 119, 119),
+      0 6px 0 rgb(122, 105, 105),
+      0 7px 0 rgb(104, 91, 91),
+      0 8px 0 rgb(86, 77, 77),
+      0 0 5px rgba(196, 118, 118, 0.05),
+      0 -1px 3px rgba(196, 118, 118, 0.2),
+      0 3px 5px rgba(196, 118, 118, 0.2),
+      0 12px 12px rgba(196, 118, 118, 0.3),
+      0 15px 15px rgba(196, 118, 118, 0.3);
   }
+  
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 20ch; } /* match number of characters */
+  }
+  
+  @keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: #ccc; }
+  }
+  
+  
+  
   
   .player-nickname {
     font-size: 3rem;
-    font-style: italic;
+    font-style: bold;
     /* font-weight: bold; */
+    
   }
   
   .player-district,
@@ -125,9 +192,27 @@
   }
 }
 
+@media (width: 1920px) and (height: 1080px) {
+  .player-name {
+    font-size: 4rem;
+  }
+  .player-id {
+    font-size: 3rem;
+    top: 15px;
+    /* right: 10px; */
+  }
+  .player-image {
+    width: 40rem;
+    height: 40rem;
+  }
+  .mpcuplogo{
+    width: 16.5rem;
+  }
+}
+
 @media (max-width: 1200px) {
   .player-name {
-    font-size: 3rem;
+    font-size: 7rem;
   }
   .player-id {
     font-size: 3rem;
@@ -217,4 +302,24 @@
   .player-stats {
     font-size: 0.9rem;
   }
+}
+
+.under-19-circle {
+  /* bottom: 0;
+  left: 0;
+  position: absolute; */
+  padding: 10px;
+  margin: 10px;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ff4757;
+  border-radius: 50%;
+  color: #ff4757;
+  font-size: 1rem;
+  font-weight: bold;
+  /* background-color: #ffffff; */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }

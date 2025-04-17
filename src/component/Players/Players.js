@@ -55,7 +55,7 @@ const Players = () => {
       { key: "bowlingArm", header: "Bowling Arm" },
       { key: "bowlingPace", header: "Bowling Pace" },
       { key: "wicketKeeper", header: "Wicket Keeper" },
-      { key: "paymentVerified", header: "Player Verified" },
+      // { key: "paymentVerified", header: "Player Verified" },
       { key: "tShirtSize", header: "T Shirt Size" },
       { key: "lowerSize", header: "Lower Size" },
     ];
@@ -85,11 +85,13 @@ const Players = () => {
           transformedPlayer[column.header] = convertToTitleCase(
             player[column.key]
           );
-        } else if (column.key === "paymentVerified") {
-          transformedPlayer[column.header] = player.tournaments[0][column.key]
-            ? "Yes"
-            : "No";
-        } else {
+        }
+        // else if (column.key === "paymentVerified") {
+        //   transformedPlayer[column.header] = player.tournaments[0][column.key]
+        //     ? "Yes"
+        //     : "No";
+        // }
+        else {
           transformedPlayer[column.header] = toProperCase(player[column.key]);
         }
       });

@@ -2,6 +2,7 @@ import React from "react";
 import cardBackground from "../../../assets/images/cardBackground.jpg";
 import "./AuctionCard.css";
 import { convertToTitleCase, formatPlayerType } from "../../../util/util";
+import mpcup from "../../../assets/images/mpcup.png";
 
 const AuctionCard = ({
   playerName,
@@ -14,6 +15,7 @@ const AuctionCard = ({
   bowlingArm,
   image,
   dob,
+  wicketkeepr,
 }) => {
   const calculateAge = (dob) => {
     const birthDate = new Date(dob);
@@ -64,10 +66,13 @@ const AuctionCard = ({
 
         {/* Right Side - Player Info */}
         <div className="player-info">
-          <div className="player-age">{age < 19 && "U19"}</div>
+          <img src={mpcup} alt="MPCup" className="mpcuplogo" />
           <p className="player-id">{playerId}</p>
-          <h1 className="player-name">{playerName.toUpperCase()}</h1>
-          <h2 className="player-nickname">{convertToTitleCase(nickname)}</h2>
+          <div className="d-flex flex-column align-items-center">
+            {age < 19 && <div className="under-19-circle">Under 19</div>}
+            <h1 className="player-name">{playerName.toUpperCase()}</h1>
+          </div>
+          {/* <h2 className="player-nickname">{convertToTitleCase(nickname)}</h2> */}
           <p className="player-district">
             {convertToTitleCase(address)} || {convertToTitleCase(district)}
           </p>
@@ -94,6 +99,7 @@ const AuctionCard = ({
               {convertToTitleCase(bowlingArm)} Bowling
             </p>
           )}
+          {wicketkeepr && <p className="player-stats">Wicket Keeper</p>}
         </div>
       </div>
     </div>
