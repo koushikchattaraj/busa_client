@@ -21,6 +21,7 @@ const FullscreenModal = ({ show, handleClose, player }) => {
             dob={player.dob}
             image={player.photo}
             wicketkeepr={player.wicketKeeper === "yes" && true}
+            bowlingType={player.bowlingPace}
           />
         )}
       </Modal.Body>

@@ -16,6 +16,7 @@ const AuctionCard = ({
   image,
   dob,
   wicketkeepr,
+  bowlingType,
 }) => {
   const calculateAge = (dob) => {
     const birthDate = new Date(dob);
@@ -45,6 +46,16 @@ const AuctionCard = ({
     return playerType.toLowerCase().includes("allrounder");
   }
 
+  function bowlingVarient(bowlingType) {
+    if (bowlingType === "legSpin") {
+      return "leg - spiner";
+    } else if (bowlingType === "offSpin") {
+      return "off - spiner";
+    } else if (bowlingType === "pace") {
+      return "fast bowler";
+    } else return "";
+  }
+
   return (
     <div
       className="auction-card"
@@ -54,52 +65,59 @@ const AuctionCard = ({
         backgroundPosition: "center",
       }}
     >
-      {/* Player ID in the top right corner */}
+      <img src={mpcup} alt="MP Cup Logo" className="mpcuplogo" />
+      <p className="player-id">{playerId}</p>
 
       <div className="auction-card-container">
-        {/* Left Side - Player Image */}
+        {/* Player Image Section */}
         <div className="player-image-container">
           <div className="player-image-border">
-            <img src={image} alt="player" className="player-image" />
+            <img src={image} alt="Player" className="player-image" />
           </div>
         </div>
 
-        {/* Right Side - Player Info */}
+        {/* Player Info Section */}
         <div className="player-info">
-          <img src={mpcup} alt="MPCup" className="mpcuplogo" />
-          <p className="player-id">{playerId}</p>
           <div className="d-flex flex-column align-items-center">
             {age < 19 && <div className="under-19-circle">Under 19</div>}
-            <h1 className="player-name">{playerName.toUpperCase()}</h1>
-          </div>
-          {/* <h2 className="player-nickname">{convertToTitleCase(nickname)}</h2> */}
-          <p className="player-district">
-            {convertToTitleCase(address)} || {convertToTitleCase(district)}
-          </p>
-          <p className="player-stats">{formatPlayerType(playerType)}</p>
-
-          {isAllRounder(playerType) && (
-            <div>
-              <p className="player-stats">
-                {convertToTitleCase(battingArm)} Batting
-              </p>
-              <p className="player-stats">
-                {convertToTitleCase(bowlingArm)} Bowling
-              </p>
+            <div className="typewriter-container">
+              <div className="player-name typewriter">{playerName}</div>
             </div>
-          )}
+          </div>
 
-          {isBatsman(playerType) && (
-            <p className="player-stats">
-              {convertToTitleCase(battingArm)} Batting
+          <div className="player-info-details">
+            <p className="player-district">
+              {convertToTitleCase(address)} || {convertToTitleCase(district)}
             </p>
-          )}
-          {isBowler(playerType) && (
-            <p className="player-stats">
-              {convertToTitleCase(bowlingArm)} Bowling
-            </p>
-          )}
-          {wicketkeepr && <p className="player-stats">Wicket Keeper</p>}
+            <p className="player-stats">{formatPlayerType(playerType)}</p>
+
+            {isAllRounder(playerType) && (
+              <>
+                <p className="player-stats">
+                  {convertToTitleCase(battingArm)} - handed batsman
+                </p>
+                <p className="player-stats">
+                  {convertToTitleCase(bowlingArm)} - arm {""}
+                  {bowlingVarient(bowlingType)}
+                </p>
+              </>
+            )}
+
+            {!isAllRounder(playerType) && isBatsman(playerType) && (
+              <p className="player-stats">
+                {convertToTitleCase(battingArm)} - handed batsman
+              </p>
+            )}
+
+            {!isAllRounder(playerType) && isBowler(playerType) && (
+              <p className="player-stats">
+                {convertToTitleCase(bowlingArm)} - arm
+                {bowlingVarient(bowlingType)}
+              </p>
+            )}
+
+            {wicketkeepr && <p className="player-stats">Wicket Keeper</p>}
+          </div>
         </div>
       </div>
     </div>

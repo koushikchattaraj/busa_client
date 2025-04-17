@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { getAllPlayers } from "../../services/services";
-// import { allPlayerDataResponse } from "../../assets/data/allPlayerDataResponse";
+import { allPlayerDataResponse } from "../../assets/data/allPlayerDataResponse";
 
 import PlayerCard from "./PlayerCard";
 import { FaDownload } from "react-icons/fa";
@@ -123,7 +123,7 @@ const Players = () => {
   const handleFetch = useCallback(async () => {
     setIsLoading(true);
     try {
-      const data = await getAllPlayers();
+      const data = allPlayerDataResponse;
       const sortedData = data.data.sort((a, b) => a?.playerId - b?.playerId);
       setRegisteredPlayers(sortedData);
       setPlayers(sortedData);
@@ -141,7 +141,7 @@ const Players = () => {
   const filteredPlayers = players.filter(
     (player) =>
       player.playerName.toLowerCase().includes(searchTerm.toLowerCase()) || // Search by name
-      player.playerId.toString().includes(searchTerm) // Search by ID
+      player.playerId.toString() === searchTerm // Search by ID
   );
 
   return (

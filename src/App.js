@@ -42,11 +42,13 @@ function App() {
   );
   const isViewPlayersFeatureEnabled = useIsFeatureEnabled("VIEW_PLAYERS");
   const isPlayerUpdateFeatureEnabled = useIsFeatureEnabled("PLAYER_UPDATE");
+  const hashPath = window.location.hash; // e.g., "#/auction"
+  const isAuctionPage = hashPath === "#/auction";
   return (
     <div className="App">
       <Router>
         <div>
-          <Navbar />
+          {!isAuctionPage && <Navbar />}
           <Routes>
             <Route
               path="/"
