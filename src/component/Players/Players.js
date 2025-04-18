@@ -123,7 +123,7 @@ const Players = () => {
   const handleFetch = useCallback(async () => {
     setIsLoading(true);
     try {
-      const data = allPlayerDataResponse;
+      const data = await getAllPlayers();
       const sortedData = data.data.sort((a, b) => a?.playerId - b?.playerId);
       setRegisteredPlayers(sortedData);
       setPlayers(sortedData);

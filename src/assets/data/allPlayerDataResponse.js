@@ -3593,7 +3593,7 @@ export const allPlayerDataResponse = {
       wicketKeeper: "yes",
       preferredJerseyNumber: "08",
       photo:
-        "https://busa-application.s3.amazonaws.com/profilePhoto/03b8f6af-c565-454a-a7f3-502d79c558cc-Screenshot_20250409_135238.jpg",
+        "https://busa-application.s3.amazonaws.com/profilePhoto/e5b50336-a273-4f73-beca-918d1082b9e5-IMG_20250418_073508.jpg",
       year: "2025",
       "tournaments[0].league": "mp_cup_bankura",
       "tournaments[0].season": "s1",
@@ -7273,8 +7273,8 @@ export const allPlayerDataResponse = {
       state: "WB",
       pinCode: "722102",
       playerType: "bowlingAllRounder",
-      battingArm: "left",
-      bowlingArm: "left",
+      battingArm: "right",
+      bowlingArm: "right",
       bowlingPace: "pace",
       wicketKeeper: "no",
       preferredJerseyNumber: "12",
@@ -12067,7 +12067,7 @@ export const allPlayerDataResponse = {
       wicketKeeper: "no",
       preferredJerseyNumber: "11",
       photo:
-        "https://busa-application.s3.amazonaws.com/profilePhoto/91ec44ed-a8f4-4f73-a8e1-4e32b122c8f1-Screenshot_2025-04-15-19-04-14-034_com.miui.gallery.jpg",
+        "https://busa-application.s3.amazonaws.com/profilePhoto/ce8e73cf-8440-4a54-baaf-9cfcce5cf654-IMG_20250418_072537.jpg",
       year: "2025",
       "tournaments[0].league": "mp_cup_bankura",
       "tournaments[0].season": "s1",
