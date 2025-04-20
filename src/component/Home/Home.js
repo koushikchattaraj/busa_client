@@ -68,9 +68,9 @@ const Home = ({
 
         {isViewPlayersFeatureEnabled && (
           <>
-            <h3 className="text-center color-white mx-3 my-0">
+            {/* <h3 className="text-center color-white mx-3 my-0">
               Auction Date : 19th April 2025
-            </h3>
+            </h3> */}
             <div className="buttonbox">
               <button
                 class="button-85"
